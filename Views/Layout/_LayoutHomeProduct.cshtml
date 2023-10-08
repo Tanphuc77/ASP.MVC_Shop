@@ -1,0 +1,679 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/favicon.ico">
+    <!-- CSS
+        ============================================ -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
+    <!-- Ionicons Font CSS -->
+    <link rel="stylesheet" href="~/assets/css/ionicons.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="~/assets/css/plugins.css">
+    <!-- Helper CSS -->
+    <link rel="stylesheet" href="~/assets/css/helper.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- Modernizer JS -->
+    <script src="~/assets/js/vendor/modernizr-3.11.2.min.js"></script>
+</head>
+<body>
+    <div class="body-wrapper bg-white">
+        <!-- Begin Header Area -->
+        <header class="bg-midnight header-4">
+            <!-- Begin Header Top Area -->
+            @Html.Partial("~/Views/Layout/_LayoutHeadertop.cshtml")
+            <!-- Header Top Area End Here -->
+            @Html.Action("MenuPartial", "Home")
+            <!-- Begin Header Bottom Area -->
+            <div class="header-bottom bg-polo-blue">
+                <div class="container">
+                    <div class="row">
+                        <!-- Begin Category Menu Area -->
+                        <div class="col-lg-3 order-lg-2 order-2">
+                            <!--Category Menu Start-->
+                            <div class="category-menu category-menu-hidden">
+                                <div class="category-heading">
+                                    <h2 class="categories-toggle"><span>All Categories</span></h2>
+                                </div>
+                                <div id="cate-toggle" class="category-menu-list">
+                                    <ul>
+                                        <li class="right-menu">
+                                            <a href="shop.html">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/1.png"
+                                                         alt="Category-thumb">
+                                                </span>Electronics
+                                            </a>
+                                            <ul class="cat-mega-menu">
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">Cameras</a>
+                                                    <ul>
+                                                        <li><a href="#">Cords and Cables</a></li>
+                                                        <li><a href="#">gps accessories</a></li>
+                                                        <li><a href="#">Microphones</a></li>
+                                                        <li><a href="#">Wireless Transmitters</a></li>
+                                                    </ul>
+                                                    <a class="cat-mega-title-2 pt-30 pt-sm-10 pt-xs-10"
+                                                       href="shop.html">GamePad</a>
+                                                    <ul>
+                                                        <li><a href="#">cube lifestyle hd</a></li>
+                                                        <li><a href="#">gopro hero4</a></li>
+                                                        <li><a href="#">handycam cx405</a></li>
+                                                        <li><a href="#">vixia hf r600</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">Digital Cameras</a>
+                                                    <ul>
+                                                        <li><a href="#">Gold eye</a></li>
+                                                        <li><a href="#">Questek</a></li>
+                                                        <li><a href="#">Snm</a></li>
+                                                        <li><a href="#">Vantech</a></li>
+                                                    </ul>
+                                                    <a class="cat-mega-title-2 pt-30 pt-sm-10 pt-xs-10"
+                                                       href="shop.html">Virtual Reality</a>
+                                                    <ul>
+                                                        <li><a href="#">Samsung</a></li>
+                                                        <li><a href="#">Toshiba</a></li>
+                                                        <li><a href="#">Transcend</a></li>
+                                                        <li><a href="#">Sandisk</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="right-menu">
+                                            <a href="shop.html">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/2.png"
+                                                         alt="Category-thumb">
+                                                </span>Book
+                                            </a>
+                                            <ul class="cat-mega-menu">
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">Children's Books</a>
+                                                    <ul>
+                                                        <li><a href="#">Early Learning</a></li>
+                                                        <li><a href="#">Animals</a></li>
+                                                        <li><a href="#">Action & Adventure</a></li>
+                                                        <li><a href="#">Education & Reference</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">comic book</a>
+                                                    <ul>
+                                                        <li><a href="#">Superhero</a></li>
+                                                        <li><a href="#">Slice-of-Life</a></li>
+                                                        <li><a href="#">Humor</a></li>
+                                                        <li><a href="#">Science-Fiction</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="right-menu">
+                                            <a href="shop.html">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/3.png"
+                                                         alt="Category-thumb">
+                                                </span>Home & Kitchen
+                                            </a>
+                                            <ul class="cat-mega-menu cat-mega-menu-2">
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">Large Appliances</a>
+                                                    <ul>
+                                                        <li><a href="#">Armchairs</a></li>
+                                                        <li><a href="#">Bunk Bed</a></li>
+                                                        <li><a href="#">Mattress</a></li>
+                                                        <li><a href="#">Sideboard</a></li>
+                                                    </ul>
+                                                    <a class="cat-mega-title-2 pt-30 pt-sm-10 pt-xs-10"
+                                                       href="shop.html">Small Appliances</a>
+                                                    <ul>
+                                                        <li><a href="#">Bootees Bags</a></li>
+                                                        <li><a href="#">Jackets</a></li>
+                                                        <li><a href="#">Shelf</a></li>
+                                                        <li><a href="#">Shoes</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">Drinkware</a>
+                                                    <ul>
+                                                        <li><a href="#">Tour Drinkware</a></li>
+                                                        <li><a href="#">Hatch Drinkware</a></li>
+                                                        <li><a href="#">Direction Drinkware</a></li>
+                                                        <li><a href="#">Crescent Drinkware</a></li>
+                                                    </ul>
+                                                    <a class="cat-mega-title-2 pt-30 pt-sm-10 pt-xs-10"
+                                                       href="shop.html">Cookware</a>
+                                                    <ul>
+                                                        <li><a href="#">Cookware Brands</a></li>
+                                                        <li><a href="#">Cookware Sets</a></li>
+                                                        <li><a href="#">Individual Cookware</a></li>
+                                                        <li><a href="#">Enamel Cookware</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="right-menu">
+                                            <a href="shop.html">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/4.png"
+                                                         alt="Category-thumb">
+                                                </span>Phones & Tablets
+                                            </a>
+                                            <ul class="cat-mega-menu">
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">Tablet</a>
+                                                    <ul>
+                                                        <li><a href="#">Chamcham</a></li>
+                                                        <li><a href="#">Sanai</a></li>
+                                                        <li><a href="#">Meito</a></li>
+                                                        <li><a href="#">Walton</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">Smartphone</a>
+                                                    <ul>
+                                                        <li><a href="#">Xail</a></li>
+                                                        <li><a href="#">Sanai</a></li>
+                                                        <li><a href="#">Meito</a></li>
+                                                        <li><a href="#">Chamcham</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="right-menu">
+                                            <a href="shop.html">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/5.png"
+                                                         alt="Category-thumb">
+                                                </span>Furnitured
+                                            </a>
+                                            <ul class="cat-mega-menu">
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">bedroom</a>
+                                                    <ul>
+                                                        <li><a href="#">Bed</a></li>
+                                                        <li><a href="#">lamp</a></li>
+                                                        <li><a href="#">Mattress Sets</a></li>
+                                                        <li><a href="#">Home Office</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop.html">livingroom</a>
+                                                    <ul>
+                                                        <li><a href="#">chair</a></li>
+                                                        <li><a href="#">table</a></li>
+                                                        <li><a href="#">carpet</a></li>
+                                                        <li><a href="#">Sofa</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/6.png"
+                                                         alt="Category-thumb">
+                                                </span>Video games
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/7.png"
+                                                         alt="Category-thumb">
+                                                </span>Sport & tourisim
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/8.png"
+                                                         alt="Category-thumb">
+                                                </span>Fruits & Veggies
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/9.png"
+                                                         alt="Category-thumb">
+                                                </span>Computer & Laptop
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/10.png"
+                                                         alt="Category-thumb">
+                                                </span>Meat & Seafood
+                                            </a>
+                                        </li>
+                                        <li class="rx-child">
+                                            <a href="#">
+                                                <span>
+                                                    <img src="~/assets/images/category-thumb/11.png"
+                                                         alt="Category-thumb">
+                                                </span>Accessories
+                                            </a>
+                                        </li>
+                                        <li class="rx-parent">
+                                            <a class="rx-default">More Categories</a>
+                                            <a class="rx-show">Less Categories</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--Category Menu End-->
+                        </div>
+                        <!-- Category Menu Area End Here -->
+                        <!-- Begin Header Middle Right Area -->
+                        <div class="col-lg-9 order-lg-2 order-1">
+                            <!-- Begin Header Middle Right Area -->
+                            <div class="header-middle-right">
+                                <!-- Begin Header Bottom Searchbox Area -->
+                                <form action="#" class="hm-searchbox hb-searchbox mt-xs-20">
+                                    <input type="text" placeholder="Enter your search key ...">
+                                    <button class="fb-search_btn" type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                                <!-- Header Bottom Searchbox Area End Here -->
+                                <!-- Begin Header Bottom Contact Information Area -->
+                                <div class="hb-contact-info">
+                                    <ul>
+                                        <li class="phone mt-xs-20">
+                                            <span>Hotline : </span><a href="callto://+123123321345">+123 321 345</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Header Bottom Contact Information Area End Here -->
+                            </div>
+                            <!-- Header Middle Right Area End Here -->
+                        </div>
+                        <!-- Header Middle Right Area End Here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Header Bottom Area End Here -->
+        </header>
+        <!-- Header Area End Here -->
+        @RenderBody()
+        <!-- Begin FB's Footer Area -->
+        <div class="fb-footer">
+            <!-- Begin Footer Top Area -->
+            <div class="fb-footer_top">
+                <div class="container">
+                    <div class="row">
+                        <!-- Begin FB's Newsletters Area -->
+                        <div class="col-lg-5">
+                            <div class="fb-newsletters">
+                                <h2 class="newsletters-headeing">Sign Up For Newsletters</h2>
+                                <p class="short-desc">Be The First To Know. Sign Up For Newsletter Today</p>
+                            </div>
+                        </div>
+                        <!-- FB's Newsletters Area End Here -->
+                        <!-- Begin FB's Newsletters Form Area -->
+                        <div class="col-lg-7">
+                            <div class="fb-newsletters_form pt-sm-15 pt-xs-15">
+                                <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef"
+                                      method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                                      class="footer-subscribe-form validate" target="_blank" novalidate>
+                                    <div id="mc_embed_signup_scroll">
+                                        <div id="mc-form" class="mc-form subscribe-form form-group">
+                                            <input id="mc-email" type="email" autocomplete="off"
+                                                   placeholder="Enter your email" />
+                                            <button class="btn mt-sm-15 mt-xs-15" id="mc-submit">Subscribe!</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- FB's Newsletters Form Area End Here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Top Area End Here -->
+            <!-- Begin FB's Footer Middle Area -->
+            <div class="fb-footer_middle bg-white">
+                <div class="container">
+                    <!-- Begin Footer Middle Top Area -->
+                    <div class="footer-middle_top">
+                        <div class="row">
+                            <!-- Begin FB's Footer Widget Area -->
+                            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-5">
+                                <div class="fb-footer_widget pt-20">
+                                    <h3 class="fb-footer-widget-headeing">Products</h3>
+                                    <ul>
+                                        <li><a href="#">Prices drop</a></li>
+                                        <li><a href="#">New products</a></li>
+                                        <li><a href="#">Best sales</a></li>
+                                        <li><a href="#">Login</a></li>
+                                        <li><a href="#">My account</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- FB's Footer Widget Area End Here -->
+                            <!-- Begin FB's Footer Widget Area -->
+                            <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+                                <div class="fb-footer_widget pt-20 pt-xs-0">
+                                    <h3 class="fb-footer-widget-headeing">Our company</h3>
+                                    <ul>
+                                        <li><a href="#">Delivery</a></li>
+                                        <li><a href="#">Legal Notice</a></li>
+                                        <li><a href="#">Terms and conditions of use</a></li>
+                                        <li><a href="#">About us</a></li>
+                                        <li><a href="#">Contact us</a></li>
+                                        <li><a href="#">Stores</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- FB's Footer Widget Area End Here -->
+                            <!-- Begin FB's Footer Widget Area -->
+                            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-5">
+                                <div class="fb-footer_widget pt-20 pt-xs-0">
+                                    <h3 class="fb-footer-widget-headeing">Your account</h3>
+                                    <ul>
+                                        <li><a href="#">Addresses</a></li>
+                                        <li><a href="#">Credit slips</a></li>
+                                        <li><a href="#">Orders</a></li>
+                                        <li><a href="#">Personal info</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- FB's Footer Widget Area End Here -->
+                            <!-- Begin FB's Footer Widget Area -->
+                            <div class="col-xl-5 col-lg-5 col-sm-7">
+                                <div class="footer-widget-logo pt-30 mb-20 pt-sm-5 pt-xs-5">
+                                    <a href="index.html">
+                                        <img src="~/assets/images/menu/logo/2.png" alt="FB's Logo">
+                                    </a>
+                                </div>
+                                <div class="footer-widget-info">
+                                    <p class="footer-widget_short-desc">
+                                        We are a team of designers and developers that
+                                        create high quality HTML Template & Woocommerce, Shopify Theme.
+                                    </p>
+                                    <div class="footer-widget_address">
+                                        <h2>Contact info:</h2>
+                                        <p>169-C, Technohub, Dubai Silicon Oasis.</p>
+                                    </div>
+                                    <div class="footer-widget-social-link">
+                                        <ul class="social-link">
+                                            <li class="facebook">
+                                                <a href="https://www.facebook.com/" data-bs-toggle="tooltip" target="_blank"
+                                                   title="Facebook">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="twitter">
+                                                <a href="https://twitter.com/" data-bs-toggle="tooltip" target="_blank"
+                                                   title="Twitter">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="youtube">
+                                                <a href="https://www.youtube.com/" data-bs-toggle="tooltip" target="_blank"
+                                                   title="Youtube">
+                                                    <i class="fa fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                            <li class="google-plus">
+                                                <a href="https://www.plus.google.com/discover" data-bs-toggle="tooltip"
+                                                   target="_blank" title="Google Plus">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                            </li>
+                                            <li class="instagram">
+                                                <a href="https://www.instagram.com/" data-bs-toggle="tooltip"
+                                                   target="_blank" title="Instagram">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FB's Footer Widget Area End Here -->
+                        </div>
+                    </div>
+                    <!-- Footer Middle Top Area End Here -->
+                    <!-- Begin Footer Middle Bottom Area -->
+                    <div class="footer-middle-bottom">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Begin Footer Tag Link Area -->
+                                <div class="footer-tag-links pt-20 pb-20">
+                                    <ul>
+                                        <li><a href="#">Online Shopping</a></li>
+                                        <li><a href="#">Promotions</a></li>
+                                        <li><a href="#">My Orders</a></li>
+                                        <li><a href="#">Help</a></li>
+                                        <li><a href="#">Customer Service</a></li>
+                                        <li><a href="#">Support</a></li>
+                                        <li><a href="#">Most Populars</a></li>
+                                        <li><a href="#">New Arrivals</a></li>
+                                        <li><a href="#">Special Products</a></li>
+                                        <li><a href="#">Manufacturers</a></li>
+                                        <li><a href="#">Our Stores</a></li>
+                                        <li><a href="#">Shipping</a></li>
+                                        <li><a href="#">Payments</a></li>
+                                        <li><a href="#">Warantee</a></li>
+                                        <li><a href="#">Refunds</a></li>
+                                        <li><a href="#">Checkout</a></li>
+                                        <li><a href="#">Discount</a></li>
+                                        <li><a href="#">Terms & Conditions</a></li>
+                                        <li><a href="#">Policy</a></li>
+                                        <li><a href="#">Shipping</a></li>
+                                        <li><a href="#">Payments</a></li>
+                                        <li><a href="#">Returns</a></li>
+                                        <li><a href="#">Refunds</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Footer Tag Link Area End Here -->
+                                <!-- Begin Footer Payment Area -->
+                                <div class="payment text-center pb-30">
+                                    <a href="#">
+                                        <img src="~/assets/images/payment/1.png" alt="FB's Footer Payment">
+                                    </a>
+                                </div>
+                                <!-- Footer Payment Area End Here -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer Middle Bottom Area End Here -->
+                </div>
+            </div>
+            <!-- FB's Footer Middle Area End Here -->
+            <!-- Begin Footer Bottom Area -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <!-- Begin Copyright Area -->
+                        <div class="col-lg-6 col-md-6">
+                            <div class="copyright">
+                                <span>Copyright &copy; 2023 <a href="#">Fastbuy.</a> All rights reserved.</span>
+                            </div>
+                        </div>
+                        <!-- Copyright Area End Here -->
+                        <!-- Begin Footer Bottom Menu Area -->
+                        <div class="col-lg-6 col-md-6">
+                            <div class="fotter-bottom_menu text-right">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about-us.html">About</a></li>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer Bottom Menu Area End Here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Bottom Area End Here -->
+        </div>
+        <!-- FB's Footer Area End Here -->
+        <!-- Begin Fb's Quick View | Modal Area -->
+        <div class="modal fade modal-wrapper" id="exampleModalCenter">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body pt-15 pb-30 pt-sm-10 pb-sm-30 pb-xs-50">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="modal-inner-area row">
+                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                <!-- Product Details Left -->
+                                <div class="product-details-left">
+                                    <div class="product-details-images slider-navigation-1">
+                                        <div class="lg-image">
+                                            <img src="~/assets/images/single-product/large-size/1.jpg"
+                                                 alt="Single Product Image">
+                                        </div>
+                                        <div class="lg-image">
+                                            <img src="~/assets/images/single-product/large-size/2.jpg"
+                                                 alt="Single Product Image">
+                                        </div>
+                                        <div class="lg-image">
+                                            <img src="~/assets/images/single-product/large-size/3.jpg"
+                                                 alt="Single Product Image">
+                                        </div>
+                                        <div class="lg-image">
+                                            <img src="~/assets/images/single-product/large-size/4.jpg"
+                                                 alt="Single Product Image">
+                                        </div>
+                                    </div>
+                                    <div class="product-details-thumbs">
+                                        <div class="sm-image">
+                                            <img src="~/assets/images/single-product/small-size/1.jpg"
+                                                 alt="Single Product Thumb">
+                                        </div>
+                                        <div class="sm-image">
+                                            <img src="~/assets/images/single-product/small-size/2.jpg"
+                                                 alt="Single Product Thumb">
+                                        </div>
+                                        <div class="sm-image">
+                                            <img src="~/assets/images/single-product/small-size/3.jpg"
+                                                 alt="Single Product Thumb">
+                                        </div>
+                                        <div class="sm-image">
+                                            <img src="~/assets/images/single-product/small-size/4.jpg"
+                                                 alt="Single Product Thumb">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// Product Details Left -->
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-7">
+                                <div class="product-details-view-content pt-40 pt-sm-25">
+                                    <div class="product-info">
+                                        <h2>Printed Dress</h2>
+                                        <div class="price-box pb-20">
+                                            <span class="new-price new-price-2">$57.98</span>
+                                            <span class="old-price">$57.98</span>
+                                        </div>
+                                        <div class="sticker-2">Save 8%</div>
+                                        <div class="product-desc">
+                                            <p>
+                                                <span>
+                                                    100% cotton double printed dress. Black and white striped top and
+                                                    orange high waisted skater skirt bottom.
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="product-variants">
+                                            <div class="produt-variants-size">
+                                                <label>Dimension</label>
+                                                <select class="nice-select">
+                                                    <option value="1" title="S" selected="selected">S</option>
+                                                    <option value="2" title="M">M</option>
+                                                    <option value="3" title="L">L</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="single-add-to-cart">
+                                            <form action="#" class="cart-quantity">
+                                                <div class="quantity">
+                                                    <label>Quantity</label>
+                                                    <div class="cart-plus-minus">
+                                                        <input class="cart-plus-minus-box" value="1" type="text">
+                                                        <div class="dec qtybutton">
+                                                            <i class="fa fa-angle-down"></i>
+                                                        </div>
+                                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                    </div>
+                                                </div>
+                                                <button class="fb-btn" type="submit">Add to cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="footer-widget-social-link modal-social-link">
+                                        <span>Share: </span>
+                                        <ul class="social-link">
+                                            <li class="facebook">
+                                                <a href="https://www.facebook.com/" data-bs-toggle="tooltip" target="_blank"
+                                                   title="Facebook">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="twitter">
+                                                <a href="https://twitter.com/" data-bs-toggle="tooltip" target="_blank"
+                                                   title="Twitter">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="youtube">
+                                                <a href="https://www.youtube.com/" data-bs-toggle="tooltip" target="_blank"
+                                                   title="Youtube">
+                                                    <i class="fa fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                            <li class="google-plus">
+                                                <a href="https://www.plus.google.com/discover" data-bs-toggle="tooltip"
+                                                   target="_blank" title="Google Plus">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                            </li>
+                                            <li class="instagram">
+                                                <a href="https://www.instagram.com/" data-bs-toggle="tooltip"
+                                                   target="_blank" title="Instagram">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fb's Quick View | Modal Area End Here -->
+    </div>
+    <!-- Body Wraper Area End Here -->
+    <!-- JS
+        ============================================ -->
+    <!-- jQuery JS -->
+    <script src="~/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugins JS -->
+    <script src="~/assets/js/plugins.js"></script>
+    <!-- Main JS -->
+    <script src="~/assets/js/main.js"></script>
+
+
+
+
+</body>

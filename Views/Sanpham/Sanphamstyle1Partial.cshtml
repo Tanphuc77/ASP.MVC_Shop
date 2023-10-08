@@ -1,0 +1,41 @@
+﻿@using WebsiteBanHang.Models
+@model IEnumerable<SanPham>
+    @foreach (var item in Model)
+    {   <div class="col-lg-3 col-md-4 col-sm-6">
+    <!-- Begin Sigle Product Area -->
+    <div class="single-product">
+        <!-- Begin Product Image Area -->
+        <div class="product-img">
+            <a href="product-details.html">
+                <img class="primary-img" src="@Url.Content("~/assets/images/product/"+@item.HinhAnh)" alt="FB'S Prduct">
+            </a>
+            <div class="sticker"><span>New</span></div>
+        </div>
+        <!-- Product Image Area End Here -->
+        <!-- Begin Product Content Area -->
+        <div class="product-content">
+            <h5 class="product-name" style="margin-top:20px;"><a href="product-details.html">@item.TenSP</a></h5>
+            <div class="rating-box">
+                <ul class="rating">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li class="no-star"><i class="fa fa-star"></i></li>
+                    <li class="no-star"><i class="fa fa-star"></i></li>
+                </ul>
+            </div>
+            <div class="price-box">
+                <span class="new-price">@item.DonGia.Value.ToString("#,##") VND</span>
+            </div>
+            <div class="product-action">
+                <ul class="product-action-link">
+                    <li class="shopping-cart_link"><a href="cart.html" title="Shopping Cart"><i class="ion-bag"></i></a></li>
+                    <li class="quick-view-btn"><a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i class="ion-eye"></i></a></li>
+                    <li class="single-product_link"><a href="@Url.Action("ChiTietSanPham", "Sanpham",new { id = item.MaSP ,@tensp = item.TenSP})" title="Single Product"><i class="ion-link"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- Sigle Product Area End Here -->
+      }
