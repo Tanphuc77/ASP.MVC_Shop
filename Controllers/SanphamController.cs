@@ -7,11 +7,15 @@ using System.Web.Mvc;
 using WebsiteBanHang.Models;
 namespace WebsiteBanHang.Controllers
 {
-    public class SanphamController : Controller
+    public class SanPhamController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         // GET: Sanpham
         public ActionResult Sanphamstyle1Partial()
+        {
+            return View();
+        }
+        public ActionResult Sanphamstyle2Partial()
         {
             return View();
         }

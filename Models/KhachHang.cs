@@ -27,8 +27,8 @@ namespace WebsiteBanHang.Models
         public string SoDienThoai { get; set; }
         public Nullable<int> MaTV { get; set; }
     
+        public virtual ThanhVien ThanhVien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
-        public virtual ThanhVien ThanhVien { get; set; }
     }
 }

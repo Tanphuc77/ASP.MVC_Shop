@@ -1573,6 +1573,52 @@ input::placeholder, textarea::placeholder {
 .product-variants .produt-variants-color .color-list li a.paste-color {
   background: #5d9cec;
 }
+.cart 
+{
+    display: flex;
+    justify-content: center;
+     align-items: center;       
+}
+.cart-item 
+{
+    margin: 100px;
+    background-color: #fff;
+    width: 500px;
+    box-shadow: 0 2px 10px #c2bebe;    
+}
+.empty-cart 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.empty-cart img 
+{
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.empty-cart-text 
+{
+    text-align: center;
+}
+
+.empty-cart-text h1 
+{
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.empty-cart-text p 
+{
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+    }
 .cart-quantity {
     margin-top: 25px;
     overflow: hidden;

@@ -36,11 +36,12 @@ namespace WebsiteBanHang.Controllers
             // Kiem tra capcha 
             if (this.IsCaptchaValid("Capcha is not valid"))
             {
-                if (ModelState.IsValid)
+                if (ModelState.IsValid)//ModelState.IsValid Nó được sử dụng để kiểm tra xem liệu dữ liệu được submit từ trang web có hợp lệ hay không. 
                 {
                     ViewBag.ThongBao = "Đăng ký thành công";
                     db.ThanhViens.Add(model);
                     db.SaveChanges();
+                    return RedirectToAction("DanhSachSanPham");
                 }
                 else
                 {

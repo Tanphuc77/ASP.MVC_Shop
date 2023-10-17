@@ -41,6 +41,8 @@
     <Property Name="DaThanhToan" Type="bit" />
     <Property Name="MaKH" Type="int" />
     <Property Name="UuDai" Type="int" />
+    <Property Name="DaHuy" Type="bit" />
+    <Property Name="DaXoa" Type="bit" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>

@@ -34,19 +34,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DonDatHangs">
-      <EntityTypeMapping TypeName="QuanLyBanHangModel.DonDatHang">
-        <MappingFragment StoreEntitySet="DonDatHang">
-          <ScalarProperty Name="MaDDH" ColumnName="MaDDH" />
-          <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
-          <ScalarProperty Name="TinhTrangGiaoHang" ColumnName="TinhTrangGiaoHang" />
-          <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
-          <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
-          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-          <ScalarProperty Name="UuDai" ColumnName="UuDai" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="KhachHangs">
       <EntityTypeMapping TypeName="QuanLyBanHangModel.KhachHang">
         <MappingFragment StoreEntitySet="KhachHang">
@@ -160,6 +147,21 @@
           <ScalarProperty Name="DonGia" ColumnName="DonGia" />
           <ScalarProperty Name="TenSP" ColumnName="TenSP" />
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonDatHangs">
+      <EntityTypeMapping TypeName="QuanLyBanHangModel.DonDatHang">
+        <MappingFragment StoreEntitySet="DonDatHang">
+          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
+          <ScalarProperty Name="DaHuy" ColumnName="DaHuy" />
+          <ScalarProperty Name="UuDai" ColumnName="UuDai" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
+          <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
+          <ScalarProperty Name="TinhTrangGiaoHang" ColumnName="TinhTrangGiaoHang" />
+          <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+          <ScalarProperty Name="MaDDH" ColumnName="MaDDH" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
