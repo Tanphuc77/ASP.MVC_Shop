@@ -15,7 +15,7 @@
         <!-- Product Image Area End Here -->
         <!-- Begin Product Content Area -->
         <div class="product-content">
-            <h5 class="product-name"><a href="@Url.Action("ChiTietSanPham", "SanPham", new { id = item.MaSP, @tensp = item.TenSP })">@item.TenSP</a></h5>
+            <h5 class="product-name" style="margin-top:20px;"><a href="@Url.Action("ChiTietSanPham", "SanPham", new { id = item.MaSP, @tensp = item.TenSP })">@item.TenSP</a></h5>
             <div class="rating-box">
                 <ul class="rating">
                     <li><i class="fa fa-star"></i></li>
@@ -30,8 +30,7 @@
             </div>
             <div class="product-action">
                 <ul class="product-action-link">
-                    <li class="shopping-cart_link"><a href="@Url.Action("ThemGioHang", "GioHang", new {@maSP = item.MaSP, @strULR = Request.Url.ToString() })" title="Thêm vào giỏ hàng"><i class="ion-bag"></i></a></li>
-                    <li class="quick-view-btn"><a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i class="ion-eye"></i></a></li>
+                    <li class="shopping-cart_link"> <a href="">@Ajax.ActionLink(" ", "ThemGioHangAjax", "GioHang", new { @maSP = item.MaSP, @strULR = Request.Url.ToString() }, ajaxOptions: new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "ajaxGioHang", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "ion-bag my-icon" })</a> </li>
                     <li class="single-product_link"><a href="@Url.Action("ChiTietSanPham", "Sanpham",new { id = item.MaSP ,@tensp = item.TenSP})" title="Xem chi tiết"><i class="ion-link"></i></a></li>
                 </ul>
             </div>

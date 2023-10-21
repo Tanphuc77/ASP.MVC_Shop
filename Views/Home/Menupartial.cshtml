@@ -1,6 +1,10 @@
 ﻿@using WebsiteBanHang.Models
 @model IEnumerable<SanPham>
 
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
 <div class="header-middle bg-white header-sticky stick">
     <div class="container logo-nav">
         <div class="row align-items-center">
@@ -27,24 +31,24 @@
                             <li class="dropdown active">
                                 <a href="@Url.Action("DanhSachSanPham","Home")">TRANG CHỦ</a>
                             </li>
-                            @foreach (var groupItem in Model.GroupBy(m=>m.LoaiSanPham))
+                            @foreach (var groupItem in Model.GroupBy(m => m.LoaiSanPham))
                             {
                                 if (groupItem.Key != null)
                                 {
-                                <li class="dropdown">
-                                    <a href="@Url.Action("SanPhamTheoLoai","Home",new { id = groupItem.Key.MaLoaiSP })">@groupItem.Key.TenLoai</a>
-                                    <ul class="hb-dropdown">
-                                        @foreach (var item in groupItem.GroupBy(m => m.NhaSanXuat))
-                                        {
-                                            if (item.Key != null)
+                                    <li class="dropdown">
+                                        <a href="@Url.Action("SanPhamTheoLoai","Home",new { id = groupItem.Key.MaLoaiSP })">@groupItem.Key.TenLoai</a>
+                                        <ul class="hb-dropdown">
+                                            @foreach (var item in groupItem.GroupBy(m => m.NhaSanXuat))
                                             {
-                                                <li>
-                                                    <a href="@Url.Action("SanPhamTheoNhaSanXuat","Home",new { id = item.Key.MaNSX })">@item.Key.TenNSX</a>
-                                                </li>
+                                                if (item.Key != null)
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action("SanPhamTheoNhaSanXuat","Home",new { id = item.Key.MaNSX })">@item.Key.TenNSX</a>
+                                                    </li>
+                                                }
                                             }
-                                        }
-                                    </ul>
-                                </li>
+                                        </ul>
+                                    </li>
                                 }
                             }
                             <li>

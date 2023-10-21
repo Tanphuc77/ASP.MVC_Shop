@@ -4,6 +4,9 @@
     ViewBag.Title = "XemGioHang";
     Layout = "~/Views/Layout/_LayoutHome.cshtml";
 }
+@{
+    List<ItemGioHang> itemGioHangs = (List<ItemGioHang>)ViewBag.ListGioHang;
+}
 @if (Model.Count == 0)
 {
     <div class="cart">
@@ -64,16 +67,16 @@ else
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="coupon-all">
-                                    <div class="coupon2">
-                                        <input class="button" name="update_cart" value="Update cart" type="submit">
+                        @*<div class="row">
+                                <div class="col-12">
+                                    <div class="coupon-all">
+                                        <div class="coupon2">
+                                            <input class="button" name="update_cart" value="Update cart" type="text">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
+                            </div>*@
+                        <div class="row" style="margin-top:25px">
                             @* form thông tin khách hàng đối với khách chưa có tài khoản *@
                             @if (Session["TaiKhoan"] == null)
                             {
@@ -116,8 +119,8 @@ else
                                 <div class="cart-page-total">
                                     <h2>Cart totals</h2>
                                     <ul>
-                                        <li>Subtotal <span>$130.00</span></li>
-                                        <li>Total <span>$130.00</span></li>
+                                        <li>Số lượng <span>@ViewBag.TinhSoLuong</span></li>
+                                        <li>Tổng thành tiền <span>@ViewBag.TongTien.ToString("#,##0")₫</span></li>
                                     </ul>
                                     <input class="fb-btn" type="submit" value="Mua Ngay" id="btnmuahang" style="margin-top:33px;" />
                                 </div>

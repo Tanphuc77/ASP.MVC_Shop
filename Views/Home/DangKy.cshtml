@@ -49,7 +49,8 @@
                             </div>
                             <div class="col-md-6 col-12 mb-20">
                                 <label>Confirm Password</label>
-                                @Html.TextBox("NhapLaiMatKhau", null, new { placeholder = "Confirm Password" })
+                                @Html.TextBox("ConfirmPassword", null, new { placeholder = "Confirm Password" })
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "text-danger validation" })
                             </div>
                             <div class="col-md-6 mb-20">
                                 @Html.MathCaptcha()

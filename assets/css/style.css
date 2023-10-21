@@ -1483,6 +1483,9 @@ input::placeholder, textarea::placeholder {
 .product-details-view-content {
   padding-right: 30px;
 }
+.content-wraper{
+	background-color: #f1f1f1;
+}
 .product-details-images .lg-image img,
 .product-details-thumbs .sm-image img {
   width: 100%;
@@ -3326,29 +3329,35 @@ li.right-menu .cat-mega-menu-2 > li {
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
 }
-.product-action li:hover {
-    background: #e23e57;
+ .product-action li:hover {
+     background: #e23e57; 
 }
-.product-action li {
+.ion-bag {
+    color: white;
+}
+.ion-bag:hover {
+    color: white;
+}
+.product-action li { 
     display: block;
     transform: scale(0);
-}
-.product-action li.shopping-cart_link {
-    transition: all 300ms ease-in-out;
+ } 
+.product-action li.shopping-cart_link { 
+    transition: all 300ms ease-in-out; 
 }
 .product-action li.quick-view-btn {
-    transition: all 400ms ease-in-out;
-}
-.product-action li.single-product_link {
-    transition: all 500ms ease-in-out;
-}
-.single-product:hover .product-action li {
+     transition: all 400ms ease-in-out; 
+} 
+.product-action li.single-product_link { 
+    transition: all 500ms ease-in-out; 
+ }
+ .single-product:hover .product-action li { 
     transform: scale(1);
-}
-.product-action li > a > i {
-  color: #ffffff;
-  display: block;
-}
+ } 
+.product-action li > a > i { 
+  color: white; 
+   display: block;
+} 
 /*----------------------------------------*/
 /* 02.5 FB's Banner With List Product
 /*----------------------------------------*/

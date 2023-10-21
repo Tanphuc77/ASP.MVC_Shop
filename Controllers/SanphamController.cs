@@ -5,12 +5,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebsiteBanHang.Models;
+using PagedList;
 namespace WebsiteBanHang.Controllers
 {
     public class SanPhamController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
-        // GET: Sanpham
         public ActionResult Sanphamstyle1Partial()
         {
             return View();

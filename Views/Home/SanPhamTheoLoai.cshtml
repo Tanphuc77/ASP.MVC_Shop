@@ -1,16 +1,15 @@
-﻿@model IEnumerable<WebsiteBanHang.Models.SanPham> 
-@{ 
+﻿@using WebsiteBanHang.Models
+@{
     ViewBag.Title = "SanPhamTheoLoai";
     Layout = "~/Views/Layout/_LayoutHome.cshtml";
 }
+@using PagedList.Mvc
+@model PagedList.IPagedList<SanPham>
 <div class="content-wraper">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 order-1 order-lg-2">
                 <!-- Begin FB's Banner Area -->
-                <div class="shoptopbar-heading">
-                    <h2>Electronics</h2>
-                </div>
                 <!-- Li's Banner Area End Here -->
                 <!-- shop-top-bar start -->
                 <div class="shop-top-bar mt-25">
@@ -26,7 +25,7 @@
                             <!-- shop-item-filter-list end -->
                         </div>
                         <div class="toolbar-amount">
-                            <span>There are 13 products.</span>
+                            <span>@Model.Count Sản Phẩm.</span>
                         </div>
                     </div>
                     <!-- product-select-box start -->
@@ -435,23 +434,15 @@
                         </div>
                         <div class="paginatoin-area">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <p>Showing 1-12 of 13 item(s)</p>
+                                <div class="col-lg-8 col-md-6">
+                                    <p></p>
                                 </div>
-                                <div class="col-lg-6 col-md-6">
+                                <div class="col-lg-4 col-md-6" style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);">
                                     <ul class="pagination-box pt-xs-20 pb-xs-15">
                                         <li>
-                                            <a href="#" class="Previous">
-                                                <i class="ion-chevron-left"></i>
-                                                Previous
-                                            </a>
+                                            @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
                                         </li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li>
-                                            <a href="#" class="Next"> Next <i class="ion-chevron-right"></i></a>
-                                        </li>
+                                        <li class="" style="float:right">@Html.PagedListPager(Model, Page => @Url.Action("SanPhamTheoLoai", new { Page = Page, @MaLoai = ViewBag.Maloai }))</li>
                                     </ul>
                                 </div>
                             </div>
@@ -460,7 +451,7 @@
                 </div>
                 <!-- shop-products-wrapper end -->
             </div>
-            <div class="col-lg-3 order-2 order-lg-1">
+            <div class="col-lg-3 order-2 order-lg-1" style="margin-top:25px">
                 <div class="sidebar-title">
                     <h2>Electronics</h2>
                 </div>
@@ -628,68 +619,6 @@
                         </form>
                     </div>
                 </div>
-                <!--Sidebar Categores Box Area End Here -->
-                <!--Begin Sidebar Categores Box Area -->
-                <div class="sidebar-title-2">
-                    <h2>Styles</h2>
-                </div>
-                <div class="sidebar-categores-box sidebar-categores_list mt-sm-25 mt-xs-25">
-                    <div class="sidebar-categores-checkbox">
-                        <form action="#">
-                            <ul>
-                                <li>
-                                    <input type="checkbox" name="product-categori"><a href="#">Casual (4)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox" checked="" name="product-categori"><a href="#">
-                                        Dressy
-                                        (2)
-                                    </a>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="product-categori"><a href="#">Girly (7)</a>
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
-                </div>
-                <!--Sidebar Categores Box Area End Here -->
-                <!--Begin Sidebar Categores Box Area -->
-                <div class="sidebar-title-2">
-                    <h2>Properties</h2>
-                </div>
-                <div class="sidebar-categores-box sidebar-categores_list mt-sm-25 mt-xs-25">
-                    <div class="sidebar-categores-checkbox">
-                        <form action="#">
-                            <ul>
-                                <li>
-                                    <input type="checkbox" name="product-categori"><a href="#">
-                                        Colorful Dress
-                                        (3)
-                                    </a>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="product-categori"><a href="#">
-                                        Maxi Dress
-                                        (2)
-                                    </a>
-                                </li>
-                                <li>
-                                    <input type="checkbox" checked="" name="product-categori"><a href="#">
-                                        Short
-                                        Dress (4)
-                                    </a>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="product-categori"><a href="#">
-                                        Short Sleeve (2)
-                                    </a>
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
-                </div>
-                <!--Sidebar Categores Box Area End Here -->
             </div>
         </div>
     </div>

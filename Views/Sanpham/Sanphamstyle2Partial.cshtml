@@ -17,7 +17,7 @@
             <!-- Begin Product Content Area -->
             <div class="product-content">
                 <h5 class="product-name" style="margin-top:20px;">
-                    <a href="@Url.Action("ChiTietSanPham", "SanPham",new { id = sanpham.MaSP ,@tensp = sanpham.TenSP})">
+                    <a href="@Url.Action("ChiTietSanPham", "SanPham",new { id = sanpham.MaSP ,@tensp = sanpham.TenSP})" style="margin-top:7px">
                         @sanpham.TenSP
                     </a>
                 </h5>
@@ -35,9 +35,8 @@
                 </div>
                 <div class="product-action">
                     <ul class="product-action-link">
-                        <li class="shopping-cart_link"><a href="@Url.Action("ThemGioHang", "GioHang", new {@maSP = sanpham.MaSP, @strULR = Request.Url.ToString() })" title="Thêm vào giỏ hàng"><i class="ion-bag"></i></a></li>
-                        <li class="quick-view-btn"><a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i class="ion-eye"></i></a></li>
-                        <li class="single-product_link"><a href="@Url.Action("ChiTietSanPham", "Sanpham",new { id = sanpham.MaSP ,@tensp = sanpham.TenSP})" title="Single Product"><i class="ion-link"></i></a></li>
+                        <li class="shopping-cart_link"> <a href="">@Ajax.ActionLink(" ", "ThemGioHangAjax", "GioHang", new { @maSP = sanpham.MaSP, @strULR = Request.Url.ToString() }, ajaxOptions: new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "ajaxGioHang", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "ion-bag my-icon" })</a> </li>
+                        <li class="single-product_link"><a href="@Url.Action("ChiTietSanPham", "Sanpham",new { id = sanpham.MaSP ,@tensp = sanpham.TenSP})" title="Xem chi tiết"><i class="ion-link"></i></a></li>
                     </ul>
                 </div>
             </div>

@@ -6,18 +6,21 @@ using System.Web.Mvc;
 using WebsiteBanHang.Models;
 using CaptchaMvc.HtmlHelpers;
 using CaptchaMvc;
+using PagedList;
 namespace WebsiteBanHang.Controllers
 {
     public class HomeController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         // GET: Home
-        public ActionResult DanhSachSanPham()
+        public ActionResult DanhSachSanPham(int? page)
         {
             // lần lượt lấy các viewbag để lấy list các sản phẩm từ csdl 
             // Danh sách điện thoại
-            var listDienThoai = db.SanPhams.Where(m => m.MaLoaiSP == 1).Take(12).ToList();
-            return View(listDienThoai);
+            var sanpham = db.SanPhams.Where(m => m.MaLoaiSP == 1).OrderBy(m => m.MaSP).ToList();
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+            return View(sanpham.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Menupartial()
         {
@@ -38,10 +41,9 @@ namespace WebsiteBanHang.Controllers
             {
                 if (ModelState.IsValid)//ModelState.IsValid Nó được sử dụng để kiểm tra xem liệu dữ liệu được submit từ trang web có hợp lệ hay không. 
                 {
-                    ViewBag.ThongBao = "Đăng ký thành công";
                     db.ThanhViens.Add(model);
                     db.SaveChanges();
-                    return RedirectToAction("DanhSachSanPham");
+                    return RedirectToAction("DangNhap");
                 }
                 else
                 {
@@ -78,15 +80,25 @@ namespace WebsiteBanHang.Controllers
             Session["TaiKhoan"] = null;
             return RedirectToAction("DanhSachSanPham");
         }
-        public ActionResult SanPhamTheoLoai(int id)
+        public ActionResult SanPhamTheoLoai(int id, int ?page)
         {
-            var sanpham = db.SanPhams.Where(s => s.MaLoaiSP == id).ToList();
-            return View(sanpham);
+            var sanpham = db.SanPhams.Where(s => s.MaLoaiSP == id ).ToList();
+
+            // Thực hiện phân trang theo loại 
+            int pageSize = 9;// Số sản phẩm có trên trang 
+            int pageNumbber = (page ?? 1); // số trang hiện tại
+
+            ViewBag.MaLoai = id;
+            return View(sanpham.OrderBy(m=>m.MaSP).ToPagedList(pageNumbber, pageSize));
         }
-        public ActionResult SanPhamTheoNhaSanXuat(int id)
+        public ActionResult SanPhamTheoNhaSanXuat(int id, int ?Page)
         {
             var sanpham = db.SanPhams.Where(s => s.MANSX == id).ToList();
-            return View(sanpham);
+            int pageSize = 9; 
+            int pageNumbber = (Page ?? 1);
+
+            ViewBag.MaNSX = id;
+            return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
         }
     }
 }

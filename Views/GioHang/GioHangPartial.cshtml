@@ -4,7 +4,8 @@
 @{
     List<ItemGioHang> itemGioHangs = (List<ItemGioHang>)ViewBag.ListGioHang;
 }
-<li class="hm-minicart">
+
+<li id="ajaxGioHang" class="hm-minicart">
     <div class="hm-minicart-trigger">
         <span class="item-icon"></span>
         <span class="item-text">
@@ -14,14 +15,11 @@
         <span class="item-total">@ViewBag.TongTien.ToString("#,##0")₫</span>
     </div>
     <span></span>
-    <div class="minicart">
-        <div class="minicart-button text-center" style="display:flex;justify-content:center;align-items:center;padding:0;">
-            <a href="@Url.Action("XemGioHang", "GioHang")" class="fb-btn" style="margin-right:5px">
-                <span>Chi tiết giỏ hàng</span>
-            </a>
-            <a href="" class="fb-btn">
-                <span>Thanh Toán</span>
-            </a>
-        </div>
-    </div>
+    <script>
+    $(document).ready(function () {
+        $("#ajaxGioHang").on("click", function () {
+            window.location.href = '@Url.Action("XemGioHang", "GioHang")';
+        });
+    });
+    </script>
 </li>

@@ -1,10 +1,11 @@
 ﻿@using WebsiteBanHang.Models
-@model IEnumerable<SanPham>
+@using PagedList.Mvc
+@model PagedList.IPagedList<SanPham>
 @{
     ViewBag.Title = "DanhSachSanPham";
     Layout = "~/Views/Layout/_LayoutHome.cshtml";
 }
-<div class="content-wraper" style="margin-top:30px">
+<div class="content-wraper">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -21,18 +22,17 @@
                                 <li class="active" role="presentation">
                                     <a aria-selected="true" class="active show" data-bs-toggle="tab" role="tab" aria-controls="grid-view" href="#grid-view"><i class="fa fa-th"></i></a>
                                 </li>
-                                <li role="presentation"><a data-bs-toggle="tab" role="tab" aria-controls="list-view" href="#list-view" aria-selected="false" tabindex="-1"><i class="fa fa-th-list"></i></a></li>
                             </ul>
                             <!-- shop-item-filter-list end -->
                         </div>
                         <div class="toolbar-amount">
-                            <span>There are 13 products.</span>
+                            <span>@Model.Count Sản Phẩm.</span>
                         </div>
                     </div>
                 </div>
                 <!-- shop-top-bar end -->
                 <!-- shop-products-wrapper start -->
-                <div class="shop-products-wrapper bg-white mt-30 pb-60 pb-sm-30">
+                <div class="shop-products-wrapper bg-white mt-30 pb-60 pb-sm-30" style="padding:0">
                     <div class="tab-content">
                         <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
                             <div class="fb-product_wrap shop-product-area">
@@ -40,34 +40,26 @@
                                     @Html.Partial("~/Views/Sanpham/Sanphamstyle1Partial.cshtml")
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
-                    <div class="paginatoin-area paginatoin-column-view">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <p>Showing 1-12 of 13 item(s)</p>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <ul class="pagination-box pt-xs-20 pb-xs-15">
-                                    <li>
-                                        <a href="#" class="Previous">
-                                            <i class="ion-chevron-left"></i>
-                                            Previous
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li>
-                                        <a href="#" class="Next"> Next <i class="ion-chevron-right"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+                <div class="paginatoin-area" style="margin-top:0">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <p></p>
+                        </div>
+                        <div class="col-lg-4 col-md-6" style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
+                            <ul class="pagination-box pt-xs-20 pb-xs-15">
+                                <li>
+                                    @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                                </li>
+                                <li style="float:right">@Html.PagedListPager(Model, Page => @Url.Action("DanhSachSanPham", new { Page = Page}))</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-                <!-- shop-products-wrapper end -->
         </div>
-     </div>
+        <!-- shop-products-wrapper end -->
+    </div>
+</div>

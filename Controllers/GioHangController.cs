@@ -54,6 +54,42 @@ namespace WebsiteBanHang.Controllers
             lstGioHang.Add(itemGioHang);
             return Redirect(strULR);
         }
+        public ActionResult ThemGioHangAjax(int maSP, string strULR)
+        {
+            // Kiểm tra sản phẩm có tồn tại trong cơ sở dữ liệu hay không 
+            SanPham sanPham = db.SanPhams.SingleOrDefault(m => m.MaSP == maSP);
+            if (sanPham == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            // Lấy Giỏ Hàng 
+            List<ItemGioHang> lstGioHang = LayGioHang();
+            // Sản phẩm đã tồn tại ở giỏ hàng 
+            ItemGioHang spCheck = lstGioHang.SingleOrDefault(m => m.MaSP == maSP);
+            if (spCheck != null)
+            {
+                // kiểm tra số lượng tồn trước khi khách hàng mua hàng 
+                if (sanPham.SoLuongTon < spCheck.SoLuong)
+                {
+                    return View("ThongBao");
+                }
+                spCheck.SoLuong++;
+                spCheck.ThanhTien = spCheck.SoLuong * spCheck.DonGia;
+                ViewBag.TinhSoLuong = TinhTongSoLuong();
+                ViewBag.TongTien = TinhTongTien();
+                return PartialView("GioHangPartial");
+            }
+            ItemGioHang itemGioHang = new ItemGioHang(maSP);
+            if (sanPham.SoLuongTon < itemGioHang.SoLuong)
+            {
+                return View("ThongBao");
+            }
+            lstGioHang.Add(itemGioHang);
+            ViewBag.TinhSoLuong = TinhTongSoLuong();
+            ViewBag.TongTien = TinhTongTien();
+            return PartialView("GioHangPartial");
+        }
         public double TinhTongSoLuong()
         {
             List<ItemGioHang> lstGioHang = Session["GioHang"] as List<ItemGioHang>;
@@ -89,57 +125,59 @@ namespace WebsiteBanHang.Controllers
         {
             // Lấy giỏ hàng 
             List<ItemGioHang> lstGioHang = LayGioHang();
+            ViewBag.TinhSoLuong = TinhTongSoLuong();
+            ViewBag.TongTien = TinhTongTien();
             return View(lstGioHang);
         }
         //Chỉnh sửa giỏ hàng
-        public ActionResult ChinhSuaGioHang(int maSP)
-        {
-            // kiểm tra session giỏ hàng tồn tại hay chưa 
-            if (Session["GioHang"] == null)
-            {
-                return RedirectToAction("DanhSachSanPham");
-            }
-            // Kiểm tra sản phẩm tồn tại trong csdl hay chưa 
-            SanPham sanPham = db.SanPhams.SingleOrDefault(m => m.MaSP == maSP);
-            if (sanPham == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
-            // lấy list giỏ hàng từ session 
-            List<ItemGioHang> lstGioHang = LayGioHang();
-            // Kiểm tra sản phẩm đó có tôn tại trong giỏ hàng hay không 
-            ItemGioHang spCheck = lstGioHang.SingleOrDefault(m => m.MaSP == maSP);
+        //public ActionResult ChinhSuaGioHang(int maSP)
+        //{
+        //    // kiểm tra session giỏ hàng tồn tại hay chưa 
+        //    if (Session["GioHang"] == null)
+        //    {
+        //        return RedirectToAction("DanhSachSanPham");
+        //    }
+        //    // Kiểm tra sản phẩm tồn tại trong csdl hay chưa 
+        //    SanPham sanPham = db.SanPhams.SingleOrDefault(m => m.MaSP == maSP);
+        //    if (sanPham == null)
+        //    {
+        //        Response.StatusCode = 404;
+        //        return null;
+        //    }
+        //    // lấy list giỏ hàng từ session 
+        //    List<ItemGioHang> lstGioHang = LayGioHang();
+        //    // Kiểm tra sản phẩm đó có tôn tại trong giỏ hàng hay không 
+        //    ItemGioHang spCheck = lstGioHang.SingleOrDefault(m => m.MaSP == maSP);
 
-            if (spCheck == null)
-            {
-                return RedirectToAction("DanhSachSanPham", "Home");
-            }
-            // Lấy list giỏ hàng tạo giao diện 
-            ViewBag.ListGioHang = lstGioHang;
+        //    if (spCheck == null)
+        //    {
+        //        return RedirectToAction("DanhSachSanPham", "Home");
+        //    }
+        //    // Lấy list giỏ hàng tạo giao diện 
+        //    ViewBag.ListGioHang = lstGioHang;
 
-            // Nếu tồn tại rồi ta sẽ trả về View
+        //    // Nếu tồn tại rồi ta sẽ trả về View
 
-            return View(spCheck);
+        //    return View(spCheck);
 
-        }
+        //}
 
-        [HttpPost]
-        public ActionResult CapNhatGioHang(ItemGioHang itemGH)
-        {
-            // Kiểm tra số lượng tồn 
-            SanPham spcheck = db.SanPhams.Single(m => m.MaSP == itemGH.MaSP);
-            if (spcheck.SoLuongTon < itemGH.SoLuong)
-            {
-                return View("ThongBao");
-            }
-            List<ItemGioHang> lstGH = LayGioHang();
+        //[HttpPost]
+        //public ActionResult CapNhatGioHang(ItemGioHang itemGH)
+        //{
+        //    // Kiểm tra số lượng tồn 
+        //    SanPham spcheck = db.SanPhams.Single(m => m.MaSP == itemGH.MaSP);
+        //    if (spcheck.SoLuongTon < itemGH.SoLuong)
+        //    {
+        //        return View("ThongBao");
+        //    }
+        //    List<ItemGioHang> lstGH = LayGioHang();
 
-            ItemGioHang updateGioHang = lstGH.Find(m => m.MaSP == itemGH.MaSP);
-            updateGioHang.SoLuong = itemGH.SoLuong;
-            updateGioHang.ThanhTien = updateGioHang.SoLuong * updateGioHang.DonGia;
-            return View();
-        }
+        //    ItemGioHang updateGioHang = lstGH.Find(m => m.MaSP == itemGH.MaSP);
+        //    updateGioHang.SoLuong = itemGH.SoLuong;
+        //    updateGioHang.ThanhTien = updateGioHang.SoLuong * updateGioHang.DonGia;
+        //    return View();
+        //}
         public ActionResult XoaGioHang(int maSP)
         {
             // kiểm tra session giỏ hàng tồn tại hay chưa 

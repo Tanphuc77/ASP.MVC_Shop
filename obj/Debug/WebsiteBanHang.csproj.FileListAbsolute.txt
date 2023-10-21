@@ -110,3 +110,7 @@ D:\asp\WebsiteBanHang\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\asp\WebsiteBanHang\bin\Microsoft.Owin.Security.OAuth.xml
 D:\asp\WebsiteBanHang\bin\Microsoft.Owin.Security.Twitter.xml
 D:\asp\WebsiteBanHang\bin\Newtonsoft.Json.xml
+D:\asp\WebsiteBanHang\bin\PagedList.dll
+D:\asp\WebsiteBanHang\bin\PagedList.Mvc.dll
+D:\asp\WebsiteBanHang\bin\PagedList.xml
+D:\asp\WebsiteBanHang\bin\PagedList.Mvc.xml

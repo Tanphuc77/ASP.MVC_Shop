@@ -1,7 +1,8 @@
-﻿ @{
+﻿@{
     ViewBag.Title = "Xemchitiet";
     Layout = "~/Views/Layout/_LayoutHomeProduct.cshtml";
 }
+
 <div class="product-details-area" style="margin-top:30px">
     <div class="container">
         <div class="pdetails bg-white">
@@ -70,7 +71,7 @@
                                             <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div><div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                         </div>
                                     </div>
-                                    <a class="fb-btn" href="@Url.Action("ThemGioHang", "GioHang", new {@maSP = Model.MaSP, @strULR = Request.Url.ToString() })" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a>
+                                    <a class="fb-btn" href="@Url.Action("ThemGioHang","GioHang",new { @maSP = Model.MaSP , @strULR = Request.Url.ToString() })" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a>
                                 </form>
                             </div>
                             <span class="product-availability pt-25">In stock</span>
