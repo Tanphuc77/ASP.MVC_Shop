@@ -36,7 +36,7 @@
                                 if (groupItem.Key != null)
                                 {
                                     <li class="dropdown">
-                                        <a href="@Url.Action("SanPhamTheoLoai","Home",new { id = groupItem.Key.MaLoaiSP })">@groupItem.Key.TenLoai</a>
+                                        <a href="@Url.Action("SanPhamTheoLoai","Home",new { id = groupItem.Key.MaLoaiSP})">@groupItem.Key.TenLoai</a>
                                         <ul class="hb-dropdown">
                                             @foreach (var item in groupItem.GroupBy(m => m.NhaSanXuat))
                                             {

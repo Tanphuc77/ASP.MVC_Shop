@@ -2,7 +2,7 @@
 @model ThanhVien
 @{
     ViewBag.Title = "DangNhap";
-    Layout = "~/Views/Layout/_LayoutHome.cshtml";
+    Layout = "~/Views/Layout/_LayoutHomeProduct.cshtml";
 }
 <div class="page-section pt-60 pb-60">
     <div class="container">
@@ -17,15 +17,15 @@
                         <div class="row">
                             <div class="col-md-12 col-12 mb-20">
                                 @Html.LabelFor(model => model.TaiKhoan)
-                                <input type="text" name="Username" placeholder = "Tài khoản">
+                                <input type="text" name="Username" placeholder="Tài khoản">
                                 @Html.ValidationMessageFor(model => model.TaiKhoan, null, new { @class = "text-danger validation" })
                             </div>
                             <div class="col-12 mb-20">
                                 @Html.LabelFor(model => model.MatKhau)
-                                <input type="text" name="Password" placeholder="Tài khoản">
+                                <input type="password" name="Password" placeholder="Tài khoản">
                                 @Html.ValidationMessageFor(model => model.MatKhau, null, new { @class = "text-danger validation" })
                             </div>
-                            <span style="color:red;text-align:left;font-size:13px;">@ViewBag.ThongBao</span>
+                            @*<span id="thong-bao" style="color:red;text-align:left;font-size:13px;">@ViewBag.ThongBao</span>*@
                             <div class="col-md-8">
                                 <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
                                     <input type="checkbox" id="remember_me">
@@ -43,5 +43,14 @@
                 </div>
             </div>
         </div>
+    </div>  
     </div>
-</div>
+    <script>
+    $(document).ready(function () {
+        $(".register-button").click(function () {
+            setTimeout(function () {
+                alert("@Html.Raw(ViewBag.ThongBao)");
+            }, 500);
+        });
+    });
+    </script>

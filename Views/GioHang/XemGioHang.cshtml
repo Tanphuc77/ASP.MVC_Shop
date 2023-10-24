@@ -2,7 +2,7 @@
 @model List<ItemGioHang>
 @{
     ViewBag.Title = "XemGioHang";
-    Layout = "~/Views/Layout/_LayoutHome.cshtml";
+    Layout = "~/Views/Layout/_LayoutHomeProduct.cshtml";
 }
 @{
     List<ItemGioHang> itemGioHangs = (List<ItemGioHang>)ViewBag.ListGioHang;
@@ -77,44 +77,6 @@ else
                                 </div>
                             </div>*@
                         <div class="row" style="margin-top:25px">
-                            @* form thông tin khách hàng đối với khách chưa có tài khoản *@
-                            @if (Session["TaiKhoan"] == null)
-                            {
-                                <div class="col-lg-6 col-12">
-                                    <div class="checkbox-form">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="checkout-form-list">
-                                                    <label>Họ và tên <span class="required">*</span></label>
-                                                    @Html.TextBox("TenKH", null, new { placeholder = "Họ và tên" })
-                                                    <label style="color:red" id="lbltenkh"></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="checkout-form-list">
-                                                    <label>Số điện thoại <span class="required">*</span></label>
-                                                    @Html.TextBox("SoDienThoai", null, new { placeholder = "Số điện thoại" })
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="checkout-form-list">
-                                                    <label>Địa chỉ <span class="required">*</span></label>
-                                                    @Html.TextBox("DiaChi", null, new { placeholder = "Địa chỉ" })
-                                                    <label style="color:red" id="lbldiaChi"></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="checkout-form-list mb-30">
-                                                    <label>Email <span class="required">*</span></label>
-                                                    @Html.TextBox("Email", null, new { placeholder = "Email" })
-                                                    <label style="color:red" id="lblemail"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            }
                             <div class="col-md-5 ms-auto" style="margin-top:7px">
                                 <div class="cart-page-total">
                                     <h2>Cart totals</h2>
@@ -132,34 +94,3 @@ else
         </div>
     </div>
 }
-<script>
-    $("#btnmuahang").click(function () {
-        var error = 0;
-        if ($("#TenKH").val() == "") {
-            $("#lbltenkh").html("không được bỏ trống");
-            error++;
-        }
-        else {
-            $("#lbltenkh").empty();
-        }
-        if ($("#DiaChi").val() == "") {
-            $("#lbldiaChi").html("không được bỏ trống");
-            error++;
-        }
-        else {
-            $("#lbldiaChi").empty();
-        }
-        dinhDangEmail = /^[0-9A-Za-z]+[0-9A-Za-z_]*@@[\w\d.]+\.\w{2,4}$/;
-        ktEmail = dinhDangEmail.test($('#Email').val());
-        if (!ktEmail) {
-            $('#lblemail').text("Email không hợp lệ!");
-            error++;
-        }
-
-        if (error != 0) {
-            return false;
-        }
-    });
-
-</script>
-

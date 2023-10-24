@@ -21,23 +21,22 @@ namespace WebsiteBanHang.Controllers
             }
             return lstGioHang;
         }
-        // Thêm giỏ hàng (Load Thông thường)
         public ActionResult ThemGioHang(int maSP, string strULR)
         {
-            // Kiểm tra sản phẩm có tồn tại trong cơ sở dữ liệu hay không 
+            //Kiểm tra sản phẩm có tồn tại trong cơ sở dữ liệu hay không
             SanPham sanPham = db.SanPhams.SingleOrDefault(m => m.MaSP == maSP);
             if (sanPham == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            // Lấy Giỏ Hàng 
+            //Lấy Giỏ Hàng
             List<ItemGioHang> lstGioHang = LayGioHang();
-            // Sản phẩm đã tồn tại ở giỏ hàng 
+            //Sản phẩm đã tồn tại ở giỏ hàng
             ItemGioHang spCheck = lstGioHang.SingleOrDefault(m => m.MaSP == maSP);
             if (spCheck != null)
             {
-                // kiểm tra số lượng tồn trước khi khách hàng mua hàng 
+                //kiểm tra số lượng tồn trước khi khách hàng mua hàng
                 if (sanPham.SoLuongTon < spCheck.SoLuong)
                 {
                     return View("ThongBao");
@@ -112,7 +111,7 @@ namespace WebsiteBanHang.Controllers
         {
             if (TinhTongSoLuong() == 0)
             {
-                ViewBag.TinhSoLuong = 0;
+                ViewBag.TinhSoLuong = 0 ;
                 ViewBag.TongTien = 0;
                 return PartialView();
             }
@@ -212,14 +211,7 @@ namespace WebsiteBanHang.Controllers
                 return RedirectToAction("DanhSachSanPham", "SanPham");
             }
             KhachHang kH = new KhachHang();
-            if (Session["TaiKhoan"] == null)
-            {
-                // thêm khách hàng vào bảng khách hàng đối với khách hàng vãng lai chưa có tài khoản   
-                kH = khachHang;
-                db.KhachHangs.Add(kH);
-                db.SaveChanges();
-            }
-            else
+            if (Session["TaiKhoan"] != null)
             {
                 // Đối với khách hàng là thành viên 
                 ThanhVien tv = Session["TaiKhoan"] as ThanhVien;

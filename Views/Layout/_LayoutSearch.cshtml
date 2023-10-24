@@ -1,4 +1,5 @@
-﻿<div class="header-bottom bg-polo-blue">
+﻿@using WebsiteBanHang.Models
+<div class="header-bottom bg-polo-blue">
     <div class="container">
         <div class="row">
             <!-- Begin Category Menu Area -->
@@ -244,10 +245,11 @@
                 <!-- Begin Header Middle Right Area -->
                 <div class="header-middle-right">
                     <!-- Begin Header Bottom Searchbox Area -->
-                    <form action="#" class="hm-searchbox hb-searchbox mt-xs-20">
-                        <input type="text" placeholder="Enter your search key ...">
-                        <button class="fb-search_btn" type="submit"><i class="fa fa-search"></i></button>
-                    </form>
+                    @using (Html.BeginForm("LayTuKhoaTimKiem", "TimKiem", FormMethod.Get, new { @class = "hm-searchbox hb-searchbox mt-xs-20" }))
+                        {
+                            <input type="text" name="tuKhoa" placeholder="Tên sản phẩm cần tìm ..." class="hm-searchbox-input" style="width:620px; border-radius:36px">
+                            <button class="fb-search_btn hm-searchbox-btn" value="Tìm Kiếm" type="submit"><i class="fa fa-search"></i></button>
+                        }
                     <!-- Header Bottom Searchbox Area End Here -->
                     <!-- Begin Header Bottom Contact Information Area -->
                     <div class="hb-contact-info">

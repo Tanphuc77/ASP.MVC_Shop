@@ -71,7 +71,14 @@
                                             <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div><div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                         </div>
                                     </div>
-                                    <a class="fb-btn" href="@Url.Action("ThemGioHang","GioHang",new { @maSP = Model.MaSP , @strULR = Request.Url.ToString() })" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a>
+                                    @if (Session["TaiKhoan"] != null)
+                                    {
+                                        <a class="fb-btn" href="@Url.Action("ThemGioHang","GioHang",new { @maSP = Model.MaSP , @strULR = Request.Url.ToString() })" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="fb-btn" href="@Url.Action("DangNhap","Home")">Thêm vào giỏ hàng</a>
+                                    }
                                 </form>
                             </div>
                             <span class="product-availability pt-25">In stock</span>

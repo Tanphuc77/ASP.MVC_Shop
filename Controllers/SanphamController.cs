@@ -13,18 +13,22 @@ namespace WebsiteBanHang.Controllers
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         public ActionResult Sanphamstyle1Partial()
         {
-            return View();
+            return PartialView();
         }
         public ActionResult Sanphamstyle2Partial()
         {
-            return View();
+            return PartialView();
         }
         // xây dựng trang xem chi tiết
         public ActionResult ChiTietSanPham(int? id,string tensp)
         {
             var sanpham = db.SanPhams.SingleOrDefault(s => s.MaSP == id);
             return View(sanpham);
-
+        }
+        public ActionResult SidebarSanPhamPartial()
+        {
+            var sanPham = db.SanPhams.ToList();
+            return View(sanPham);
         }
     }
 }

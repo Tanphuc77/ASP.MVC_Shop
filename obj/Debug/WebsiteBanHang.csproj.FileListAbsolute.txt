@@ -114,3 +114,13 @@ D:\asp\WebsiteBanHang\bin\PagedList.dll
 D:\asp\WebsiteBanHang\bin\PagedList.Mvc.dll
 D:\asp\WebsiteBanHang\bin\PagedList.xml
 D:\asp\WebsiteBanHang\bin\PagedList.Mvc.xml
+D:\asp\WebsiteBanHang\bin\BCrypt.Net-Next.dll
+D:\asp\WebsiteBanHang\bin\System.Buffers.dll
+D:\asp\WebsiteBanHang\bin\System.Memory.dll
+D:\asp\WebsiteBanHang\bin\System.Numerics.Vectors.dll
+D:\asp\WebsiteBanHang\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\asp\WebsiteBanHang\bin\BCrypt.Net-Next.xml
+D:\asp\WebsiteBanHang\bin\System.Buffers.xml
+D:\asp\WebsiteBanHang\bin\System.Memory.xml
+D:\asp\WebsiteBanHang\bin\System.Numerics.Vectors.xml
+D:\asp\WebsiteBanHang\bin\System.Runtime.CompilerServices.Unsafe.xml
