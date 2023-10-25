@@ -55,6 +55,7 @@
                 @Html.Partial("~/Views/Layout/_LayoutSearch.cshtml")
             </header>
             @Html.Partial("~/Views/Layout/_LayoutSlide.cshtml")
+            @Html.Action("SlideDienThoaiPartial", "Home")
             @RenderBody()
             @Html.Partial("~/Views/Layout/_Layoutfooter.cshtml")
         </div>

@@ -187,10 +187,6 @@
     <Content Include="assets\fonts\fontawesome-webfont3e6e3e6e.svg" />
     <Content Include="assets\fonts\ionicons28b5.svg" />
     <Content Include="assets\fonts\lgd641d641.svg" />
-    <Content Include="assets\images\about-us\1.jpg" />
-    <Content Include="assets\images\about-us\team\1.jpg" />
-    <Content Include="assets\images\about-us\team\2.jpg" />
-    <Content Include="assets\images\about-us\team\3.jpg" />
     <Content Include="assets\images\banner\1_1.jpg" />
     <Content Include="assets\images\banner\1_10.jpg" />
     <Content Include="assets\images\banner\1_11.jpg" />
@@ -224,26 +220,6 @@
     <Content Include="assets\images\banner\4_2.jpg" />
     <Content Include="assets\images\banner\4_3.jpg" />
     <Content Include="assets\images\banner\638291129122154149_F-C1_1200x300.jpg" />
-    <Content Include="assets\images\blog\large-size\1.jpg" />
-    <Content Include="assets\images\blog\large-size\2.jpg" />
-    <Content Include="assets\images\blog\large-size\3.jpg" />
-    <Content Include="assets\images\blog\medium-size\1.jpg" />
-    <Content Include="assets\images\blog\medium-size\2.jpg" />
-    <Content Include="assets\images\blog\medium-size\3.jpg" />
-    <Content Include="assets\images\blog\medium-size\4.jpg" />
-    <Content Include="assets\images\blog\medium-size\5.jpg" />
-    <Content Include="assets\images\blog\medium-size\6.jpg" />
-    <Content Include="assets\images\blog\small-size\1.jpg" />
-    <Content Include="assets\images\blog\small-size\2.jpg" />
-    <Content Include="assets\images\blog\small-size\3.jpg" />
-    <Content Include="assets\images\blog\small-size\admin.png" />
-    <Content Include="assets\images\blog\small-size\user.png" />
-    <Content Include="assets\images\branding\1.jpg" />
-    <Content Include="assets\images\branding\2.jpg" />
-    <Content Include="assets\images\branding\3.jpg" />
-    <Content Include="assets\images\branding\4.jpg" />
-    <Content Include="assets\images\branding\5.jpg" />
-    <Content Include="assets\images\branding\6.jpg" />
     <Content Include="assets\images\category-thumb\1.png" />
     <Content Include="assets\images\category-thumb\10.png" />
     <Content Include="assets\images\category-thumb\11.png" />
@@ -260,10 +236,11 @@
     <Content Include="assets\images\list-product\2.jpg" />
     <Content Include="assets\images\list-product\3.jpg" />
     <Content Include="assets\images\list-product\4.jpg" />
-    <Content Include="assets\images\list-product\icons8-asus-153.png" />
-    <Content Include="assets\images\list-product\icons8-hp-153.png" />
-    <Content Include="assets\images\list-product\icons8-msi-153.png" />
-    <Content Include="assets\images\list-product\icons8-samsung-153.png" />
+    <Content Include="assets\images\list-product\Apple.png" />
+    <Content Include="assets\images\list-product\Asus.png" />
+    <Content Include="assets\images\list-product\HP.png" />
+    <Content Include="assets\images\list-product\MSI.png" />
+    <Content Include="assets\images\list-product\Samsung.png" />
     <Content Include="assets\images\loading.gif" />
     <Content Include="assets\images\menu\flag-icon\1.jpg" />
     <Content Include="assets\images\menu\flag-icon\2.jpg" />
@@ -278,22 +255,6 @@
     <Content Include="assets\images\minicart\5.jpg" />
     <Content Include="assets\images\minicart\6.jpg" />
     <Content Include="assets\images\minicart\empty-cart.png" />
-    <Content Include="assets\images\payment\1.png" />
-    <Content Include="assets\images\product-details\large-size\1.jpg" />
-    <Content Include="assets\images\product-details\large-size\2.jpg" />
-    <Content Include="assets\images\product-details\large-size\3.jpg" />
-    <Content Include="assets\images\product-details\large-size\4.jpg" />
-    <Content Include="assets\images\product-details\manufacturer.jpg" />
-    <Content Include="assets\images\product-details\small-size\1.jpg" />
-    <Content Include="assets\images\product-details\small-size\2.jpg" />
-    <Content Include="assets\images\product-details\small-size\3.jpg" />
-    <Content Include="assets\images\product-details\small-size\4.jpg" />
-    <Content Include="assets\images\product-thumb\1.png" />
-    <Content Include="assets\images\product-thumb\2.png" />
-    <Content Include="assets\images\product-thumb\3.png" />
-    <Content Include="assets\images\product-thumb\4.png" />
-    <Content Include="assets\images\product-thumb\5.png" />
-    <Content Include="assets\images\product-thumb\6.png" />
     <Content Include="assets\images\product\Acer Nitro 5 Gaming AN515-57-53F9.jpg" />
     <Content Include="assets\images\product\Asus Gaming ROG Strix G533ZS-LN036W.jpg" />
     <Content Include="assets\images\product\Asus TUF Gaming FX506HC-HN144W.jpg" />
@@ -319,14 +280,6 @@
     <Content Include="assets\images\product\Samsung Galaxy A54.jpg" />
     <Content Include="assets\images\product\Samsung Galaxy Note 10 Plus.jpg" />
     <Content Include="assets\images\product\Samsung Galaxy S22.jpg" />
-    <Content Include="assets\images\single-product\large-size\1.jpg" />
-    <Content Include="assets\images\single-product\large-size\2.jpg" />
-    <Content Include="assets\images\single-product\large-size\3.jpg" />
-    <Content Include="assets\images\single-product\large-size\4.jpg" />
-    <Content Include="assets\images\single-product\small-size\1.jpg" />
-    <Content Include="assets\images\single-product\small-size\2.jpg" />
-    <Content Include="assets\images\single-product\small-size\3.jpg" />
-    <Content Include="assets\images\single-product\small-size\4.jpg" />
     <Content Include="assets\images\slider\1_1.jpg" />
     <Content Include="assets\images\slider\1_2.jpg" />
     <Content Include="assets\images\slider\2_1.jpg" />
@@ -488,6 +441,8 @@
     <Content Include="Views\TimKiem\KetQuaTimKiem.cshtml" />
     <Content Include="Views\SanPham\SidebarSanPhamPartial.cshtml" />
     <Content Include="Views\Layout\_LayoutSlide.cshtml" />
+    <Content Include="Views\Home\SlideDienThoaiPartial.cshtml" />
+    <Content Include="Views\Home\SlideLoaiDienThoai.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -497,6 +452,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\images\product-mini\" />
     <Folder Include="Views\TiemKiem\" />
   </ItemGroup>
   <ItemGroup>

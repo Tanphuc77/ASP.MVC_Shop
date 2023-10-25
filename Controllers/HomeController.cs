@@ -41,7 +41,7 @@ namespace WebsiteBanHang.Controllers
             if (this.IsCaptchaValid("Capcha is not valid"))
             {
 
-                if (ModelState.IsValid)//ModelState.IsValid Nó được sử dụng để kiểm tra xem liệu dữ liệu được submit từ trang web có hợp lệ hay không. 
+                if (ModelState.IsValid)//Kiểm tra xem liệu dữ liệu được submit từ trang web có hợp lệ hay không. 
                 {
                     ThanhVien thanhVien = db.ThanhViens.SingleOrDefault(m => m.TaiKhoan == model.TaiKhoan);
                     if (thanhVien == null)
@@ -109,9 +109,23 @@ namespace WebsiteBanHang.Controllers
             ViewBag.MaLoai = id;
             return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
         }
-        public ActionResult SanPhamTheoNhaSanXuat(int id, int? Page)
+        public ActionResult SanPhamTheoNhaSanXuat(int maLoai, int id, int? Page)
         {
-            var sanpham = db.SanPhams.Where(s => s.MANSX == id).ToList();
+            var sanpham = db.SanPhams.Where(m => m.MANSX == id && m.MaLoaiSP == maLoai).ToList();
+            int pageSize = 9;
+            int pageNumbber = (Page ?? 1);
+
+            ViewBag.MaNSX = id;
+            return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
+        }
+        public ActionResult SlideDienThoaiPartial()
+        {
+            var nhaSanXuat = db.NhaSanXuats.ToList();
+            return PartialView(nhaSanXuat);
+        }
+        public ActionResult SlideLoaiDienThoai(int id, int? Page)
+        {
+            var sanpham = db.SanPhams.Where(m => m.MANSX == id).ToList();
             int pageSize = 9;
             int pageNumbber = (Page ?? 1);
 
