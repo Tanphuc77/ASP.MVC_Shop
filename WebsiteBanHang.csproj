@@ -441,8 +441,15 @@
     <Content Include="Views\TimKiem\KetQuaTimKiem.cshtml" />
     <Content Include="Views\SanPham\SidebarSanPhamPartial.cshtml" />
     <Content Include="Views\Layout\_LayoutSlide.cshtml" />
-    <Content Include="Views\Home\SlideDienThoaiPartial.cshtml" />
-    <Content Include="Views\Home\SlideLoaiDienThoai.cshtml" />
+    <Content Include="Views\Home\SlideNhaSanXuatPartial.cshtml" />
+    <Content Include="Views\Home\SlideChiTietNhaSanXuat.cshtml" />
+    <Content Include="Views\SanPham\SidebarDonGia1_5.cshtml" />
+    <Content Include="Views\SanPham\SidebarDonGia10_15.cshtml" />
+    <Content Include="Views\SanPham\SidebarDonGia15_30.cshtml" />
+    <Content Include="Views\SanPham\SidebarDonGia30_50.cshtml" />
+    <Content Include="Views\SanPham\SidebarDonGia50_100.cshtml" />
+    <Content Include="Views\SanPham\SidebarDonGiaTren100.cshtml" />
+    <Content Include="Views\SanPham\SidebarDonGia5_10.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

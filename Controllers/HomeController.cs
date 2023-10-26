@@ -118,18 +118,17 @@ namespace WebsiteBanHang.Controllers
             ViewBag.MaNSX = id;
             return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
         }
-        public ActionResult SlideDienThoaiPartial()
+        public ActionResult SlideNhaSanXuatPartial()
         {
             var nhaSanXuat = db.NhaSanXuats.ToList();
             return PartialView(nhaSanXuat);
         }
-        public ActionResult SlideLoaiDienThoai(int id, int? Page)
+        public ActionResult SlideChiTietNhaSanXuat(int maNSX, int? Page)
         {
-            var sanpham = db.SanPhams.Where(m => m.MANSX == id).ToList();
+            var sanpham = db.SanPhams.Where(m => m.MANSX == maNSX).ToList();
             int pageSize = 9;
             int pageNumbber = (Page ?? 1);
 
-            ViewBag.MaNSX = id;
             return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
         }
     }

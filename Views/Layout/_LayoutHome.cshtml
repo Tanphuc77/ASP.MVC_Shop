@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS
         ============================================ -->
     <!-- Bootstrap CSS -->
@@ -31,14 +33,14 @@
 
     <script src="~/assets/js/vendor/modernizr-3.11.2.min.js"></script>
 
-        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
-        <script src="~/Scripts/jquery-3.7.1.js"></script>
+    <script src="~/Scripts/jquery-3.7.1.js"></script>
 
-        <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
 
-        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    </head>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</head>
     <body>
         <div class="body-wrapper bg-white">
             <header class="bg-midnight header-4">
@@ -55,7 +57,7 @@
                 @Html.Partial("~/Views/Layout/_LayoutSearch.cshtml")
             </header>
             @Html.Partial("~/Views/Layout/_LayoutSlide.cshtml")
-            @Html.Action("SlideDienThoaiPartial", "Home")
+            @Html.Action("SlideNhaSanXuatPartial", "Home")
             @RenderBody()
             @Html.Partial("~/Views/Layout/_Layoutfooter.cshtml")
         </div>
