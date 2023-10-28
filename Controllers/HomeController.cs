@@ -16,8 +16,6 @@ namespace WebsiteBanHang.Controllers
         // GET: Home
         public ActionResult DanhSachSanPham(int? page)
         {
-            // lần lượt lấy các viewbag để lấy list các sản phẩm từ csdl 
-            // Danh sách điện thoại
             var sanPham = db.SanPhams.Where(m => m.MaLoaiSP == 1).OrderBy(m => m.MaSP).ToList();
             int pageSize = 12;
             int pageNumber = (page ?? 1);
@@ -90,7 +88,7 @@ namespace WebsiteBanHang.Controllers
                 return RedirectToAction("DanhSachSanPham");
                 }
             }
-            ViewBag.ThongBao = ("Tài khoản hoặc mật khẩu không đúng");
+            TempData["ThongBao"] = "Tài khoản hoặc mật khẩu không đúng";
             return View();
         }
         public ActionResult DangXuat()
@@ -109,13 +107,13 @@ namespace WebsiteBanHang.Controllers
             ViewBag.MaLoai = id;
             return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
         }
-        public ActionResult SanPhamTheoNhaSanXuat(int maLoai, int id, int? Page)
+        public ActionResult SanPhamTheoNhaSanXuat(int maLoai, int maNSX, int? Page)
         {
-            var sanpham = db.SanPhams.Where(m => m.MANSX == id && m.MaLoaiSP == maLoai).ToList();
+            var sanpham = db.SanPhams.Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai).ToList();
             int pageSize = 9;
             int pageNumbber = (Page ?? 1);
 
-            ViewBag.MaNSX = id;
+            ViewBag.MaNSX = maNSX;
             return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
         }
         public ActionResult SlideNhaSanXuatPartial()

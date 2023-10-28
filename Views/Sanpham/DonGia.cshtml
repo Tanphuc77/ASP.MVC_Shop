@@ -1,0 +1,63 @@
+﻿<div class="sidebar-categores-box search-filter mt-sm-25 mt-xs-30">
+    <div class="sidebar-title">
+        <h2>Filter By</h2>
+    </div>
+    <button class="btn-clear-all">Clear all</button>
+</div>
+<div class="sidebar-title-2">
+    <h2>Mức giá</h2>
+</div>
+<div class="sidebar-categores-box sidebar-categores_list mt-sm-25 mt-xs-25">
+    <div class="sidebar-categores-checkbox">
+        <form>
+            <ul>
+                <li>
+                    <input type="radio" name="product-categori" checked=""><a href="#">
+                        Tất cả
+                    </a>
+                </li>
+                <li>
+                    <input type="radio" name="product-categori"><a href="@Url.Action("SidebarDonGia1_5", "SanPham", new {@maNSX = Request.RequestContext.RouteData.Values["maNSX"]})">
+                        1 triệu -
+                        5 triệu
+                    </a>
+                </li>
+                <li>
+                    <input type="radio" name="product-categori"><a href="@Url.Action("SidebarDonGia5_10", "SanPham")">
+                        5 triệu -
+                        10 triệu
+                    </a>
+                </li>
+                <li>
+                    <input type="radio" name="product-categori"><a href="@Url.Action("SidebarDonGia10_15", "SanPham")">
+                        10 triệu -
+                        15 triệu
+                    </a>
+                </li>
+                <li>
+                    <input type="radio" name="product-categori"><a href="@Url.Action("SidebarDonGia15_30", "SanPham")">
+                        15 triệu -
+                        30 triệu
+                    </a>
+                </li>
+                <li>
+                    <input type="radio" name="product-categori"><a href="@Url.Action("SidebarDonGia30_50", "SanPham")">
+                        30 triệu -
+                        50 triệu
+                    </a>
+                </li>
+                <li>
+                    <input type="radio" name="product-categori"><a href="@Url.Action("SidebarDonGia50_100", "SanPham")">
+                        50 triệu -
+                        100 triệu
+                    </a>
+                </li>
+                <li>
+                    <input type="radio" name="product-categori"><a href="@Url.Action("SidebarDonGiaTren100", "SanPham")">
+                        Trên 100 triệu
+                    </a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

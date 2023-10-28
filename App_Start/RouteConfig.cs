@@ -19,7 +19,6 @@ namespace WebsiteBanHang
                url: "{tensp}-{id}",
                defaults: new { controller = "Sanpham", action = "ChiTietSanPham", id = UrlParameter.Optional }
            );
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

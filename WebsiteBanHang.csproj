@@ -255,6 +255,36 @@
     <Content Include="assets\images\minicart\5.jpg" />
     <Content Include="assets\images\minicart\6.jpg" />
     <Content Include="assets\images\minicart\empty-cart.png" />
+    <Content Include="assets\images\product-mini\Asus rog phone 7 den.jpg" />
+    <Content Include="assets\images\product-mini\Asus rog phone 7 trang.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 11 trang.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 12 xanh.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 12.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 13 den.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 13 hong.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 13 xanhla.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 14 plus do.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 14 plus tim.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 14 plus trang.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 14 pro max den.jpg" />
+    <Content Include="assets\images\product-mini\Iphone 14-pro max vang.jpg" />
+    <Content Include="assets\images\product-mini\Iphone-12 den.jpg" />
+    <Content Include="assets\images\product-mini\Iphone-14 pro max bac.jpg" />
+    <Content Include="assets\images\product-mini\Realme 11 4g den.jpg" />
+    <Content Include="assets\images\product-mini\Realme 11 4g vang.jpg" />
+    <Content Include="assets\images\product-mini\Realme 11 pro 5g vang.jpg" />
+    <Content Include="assets\images\product-mini\Realme 11 pro 5g xanh.jpg" />
+    <Content Include="assets\images\product-mini\Realme c30s den.jpg" />
+    <Content Include="assets\images\product-mini\Realme c30s xanh.jpg" />
+    <Content Include="assets\images\product-mini\Realme c51 den.jpg" />
+    <Content Include="assets\images\product-mini\Realme c51 xanh.jpg" />
+    <Content Include="assets\images\product-mini\Samsung galaxy a23 5g.jpg" />
+    <Content Include="assets\images\product-mini\Samsung Galaxy a34 den.jpg" />
+    <Content Include="assets\images\product-mini\Samsung Galaxy a34 xanh.jpg" />
+    <Content Include="assets\images\product-mini\Samsung Galaxy A54 5g tim.jpg" />
+    <Content Include="assets\images\product-mini\Samsung galaxy a54 5g xanh.jpg" />
+    <Content Include="assets\images\product-mini\Samsung Galaxy s22 den.jpg" />
+    <Content Include="assets\images\product-mini\Samsung Galaxy s22 xanh.jpg" />
     <Content Include="assets\images\product\Acer Nitro 5 Gaming AN515-57-53F9.jpg" />
     <Content Include="assets\images\product\Asus Gaming ROG Strix G533ZS-LN036W.jpg" />
     <Content Include="assets\images\product\Asus TUF Gaming FX506HC-HN144W.jpg" />
@@ -444,12 +474,8 @@
     <Content Include="Views\Home\SlideNhaSanXuatPartial.cshtml" />
     <Content Include="Views\Home\SlideChiTietNhaSanXuat.cshtml" />
     <Content Include="Views\SanPham\SidebarDonGia1_5.cshtml" />
-    <Content Include="Views\SanPham\SidebarDonGia10_15.cshtml" />
-    <Content Include="Views\SanPham\SidebarDonGia15_30.cshtml" />
-    <Content Include="Views\SanPham\SidebarDonGia30_50.cshtml" />
-    <Content Include="Views\SanPham\SidebarDonGia50_100.cshtml" />
-    <Content Include="Views\SanPham\SidebarDonGiaTren100.cshtml" />
-    <Content Include="Views\SanPham\SidebarDonGia5_10.cshtml" />
+    <Content Include="Views\SanPham\DonGia.cshtml" />
+    <Content Include="Views\SanPham\ChiTietSanPhamLapTop.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -459,7 +485,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\images\product-mini\" />
     <Folder Include="Views\TiemKiem\" />
   </ItemGroup>
   <ItemGroup>

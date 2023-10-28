@@ -43,7 +43,7 @@
                                                 if (item.Key != null)
                                                 {
                                                     <li>
-                                                        <a href="@Url.Action("SanPhamTheoNhaSanXuat","Home",new { id = item.Key.MaNSX , maLoai = groupItem.Key.MaLoaiSP})">@item.Key.TenNSX</a>
+                                                        <a href="@Url.Action("SanPhamTheoNhaSanXuat","Home",new { maLoai = groupItem.Key.MaLoaiSP, maNSX = item.Key.MaNSX})">@item.Key.TenNSX</a>
                                                     </li>
                                                 }
                                             }
