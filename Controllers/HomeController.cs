@@ -14,7 +14,7 @@ namespace WebsiteBanHang.Controllers
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         // GET: Home
-        public ActionResult DanhSachSanPham(int? page)
+        public ActionResult Index(int? page)    
         {
             var sanPham = db.SanPhams.Where(m => m.MaLoaiSP == 1).OrderBy(m => m.MaSP).ToList();
             int pageSize = 12;

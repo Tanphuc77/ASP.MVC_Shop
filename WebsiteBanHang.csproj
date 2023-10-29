@@ -2319,7 +2319,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Layout\_LayoutHome.cshtml" />
     <Content Include="Views\SanPham\Sanphamstyle1Partial.cshtml" />
-    <Content Include="Views\Home\DanhSachSanPham.cshtml" />
+    <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\Home\Menupartial.cshtml" />
     <Content Include="Views\Layout\_LayoutHomeProduct.cshtml" />
     <Content Include="Views\SanPham\ChiTietSanPham.cshtml" />
