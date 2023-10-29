@@ -13,17 +13,16 @@ namespace WebsiteBanHang
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            // Cấu hình đường dẫn trang xem chi tiết của controller sản phẩm
+            routes.MapRoute(
+                name: "DanhSachSanPham",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "DanhSachSanPham", id = UrlParameter.Optional }
+            );
             routes.MapRoute(
                name: "ChiTietSanPham",
                url: "{tensp}-{id}",
                defaults: new { controller = "Sanpham", action = "ChiTietSanPham", id = UrlParameter.Optional }
            );
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "DanhSachSanPham", id = UrlParameter.Optional }
-            );
         }
     }
 }

@@ -1,0 +1,110 @@
+﻿@using WebsiteBanHang.Models
+@model IEnumerable<SanPham>
+@{
+    ViewBag.Title = "QuanLySanPham";
+    Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
+    // Khởi tạo Control WebGird
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+@*Thể hiện dữ liệu thông qua WebGrid*@
+
+@grid.GetHtml(
+    tableStyle: "gridTable", /*class css cho table*/
+    headerStyle: "gridHead",/*class css cho tieu de*/
+    footerStyle: "gridFooter",/*class css cho phan trang phia duoi*/
+    rowStyle: "gridRow",/*class css cho row le*/
+    alternatingRowStyle: "gridAltRow",/*class css cho row chan*/
+    columns: grid.Columns(
+        grid.Column("MaSP", "Mã sản phẩm"),
+        grid.Column("TenSP", "Tên sản phẩm"),
+        grid.Column("DonGia", "Đơn giá", format: m => @Html.Raw(((int)m.DonGia).ToString("N0") + "₫")),
+        grid.Column("CauHinh", "Cấu hình", format: m => @Html.Raw(m.CauHinh)),
+        grid.Column("HinhAnh", "Hình ảnh", format: m => @Html.Raw("<img src =\"../assets/images/product/" + m.HinhAnh + "\">"))
+        ))
+<style>
+    .gridTable {
+        margin-left: 30px;
+        width: 96%;
+        border-collapse: collapse;
+        border: 2px solid #ddd;
+        font-size: 14px;
+    }
+
+        .gridTable td,
+        .gridTable th {
+            padding: 8px;
+            border: 2px solid #ddd;
+        }
+
+        .gridTable th {
+            color: #fff;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .gridTable td {
+            color: #858796;
+            background-color: #ffffff;
+        }
+
+        .gridTable th:first-child {
+            text-align: center;
+        }
+
+        .gridTable td:first-child {
+            text-align: center;
+        }
+
+        .gridTable tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .gridTable img {
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    /* Class cho phần phân trang */
+        .gridFooter {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        }
+
+        /* Style cho các nút phân trang */
+        .gridFooter a {
+            display: inline-block;
+            color: #858796;
+            border: 1px solid #ddd;
+            padding: 5px 8px;
+            border-radius: 3px;
+            margin:0 5px 0 5px;
+        }
+
+        /* Style cho nút trang hiện tại */
+        .gridFooter .currentPage {
+            background-color: #4e73df;
+            color: #fff;
+            border-color: #4e73df;
+            font-weight: bold;
+        }
+
+        /* Style cho nút hover */
+            .gridFooter a:hover:not(.disabled) {
+                background-color: #dddddd;
+            }
+
+        /* Style cho nút disabled */
+        .gridFooter .disabled {
+            color: #ddd;
+            border-color: #ddd;
+        }
+
+        /* Style cho nút khi không phải là trang hiện tại */
+        .gridFooter a:not(.currentPage):not(.disabled) {
+            color: #4e73df;
+        }
+</style>
+
+

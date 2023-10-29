@@ -27,11 +27,6 @@ namespace WebsiteBanHang.Controllers
             var sanpham = db.SanPhams.SingleOrDefault(s => s.MaSP == id);
             return View(sanpham);
         }
-        public ActionResult ChiTietSanPhamLapTop(int maLoai, int? id, string tensp)
-        {
-            var sanpham = db.SanPhams.SingleOrDefault(s => s.MaSP == id && s.MaLoaiSP == maLoai);
-            return View(sanpham);
-        }
         public ActionResult SidebarSanPhamPartial()
         {
             var sanPham = db.SanPhams.ToList();

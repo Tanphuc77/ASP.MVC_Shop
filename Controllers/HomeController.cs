@@ -129,5 +129,14 @@ namespace WebsiteBanHang.Controllers
 
             return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
         }
+        public ActionResult GioiThieu()
+        {
+            return View();
+        }
+        public ActionResult LienHe()
+        {
+            return View();
+        }
+
     }
 }
