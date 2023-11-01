@@ -14,9 +14,9 @@ namespace WebsiteBanHang.Controllers
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         // GET: Home
-        public ActionResult Index(int? page)    
+        public ActionResult DanhSachSanPham(int? page)    
         {
-            var sanPham = db.SanPhams.Where(m => m.MaLoaiSP == 1).OrderBy(m => m.MaSP).ToList();
+            var sanPham = db.SanPhams.Where(m => m.MaLoaiSP == 1 && m.DaXoa == false).OrderBy(m => m.DonGia).ToList();
             int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(sanPham.ToPagedList(pageNumber, pageSize));
@@ -105,16 +105,18 @@ namespace WebsiteBanHang.Controllers
             int pageNumbber = (page ?? 1); // số trang hiện tại
 
             ViewBag.MaLoai = id;
-            return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
+            return View(sanpham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
         }
         public ActionResult SanPhamTheoNhaSanXuat(int maLoai, int maNSX, int? Page)
         {
             var sanpham = db.SanPhams.Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai).ToList();
             int pageSize = 9;
             int pageNumbber = (Page ?? 1);
-
+            
+            ViewBag.MaLoai = maLoai;
             ViewBag.MaNSX = maNSX;
-            return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
+
+            return View(sanpham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
         }
         public ActionResult SlideNhaSanXuatPartial()
         {
@@ -126,8 +128,8 @@ namespace WebsiteBanHang.Controllers
             var sanpham = db.SanPhams.Where(m => m.MANSX == maNSX).ToList();
             int pageSize = 9;
             int pageNumbber = (Page ?? 1);
-
-            return View(sanpham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
+            ViewBag.MaNSX = maNSX;
+            return View(sanpham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
         }
         public ActionResult GioiThieu()
         {

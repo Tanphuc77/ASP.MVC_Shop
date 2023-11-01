@@ -7,7 +7,11 @@
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
 }
 @*Thể hiện dữ liệu thông qua WebGrid*@
-
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-8">
+        <a class="btn btn-primary" href="@Url.Action("ThemMoi","QuanLySanPham")" style="margin-left:18px">Thêm mới</a>
+    </div>
+</div>
 @grid.GetHtml(
     tableStyle: "gridTable", /*class css cho table*/
     headerStyle: "gridHead",/*class css cho tieu de*/

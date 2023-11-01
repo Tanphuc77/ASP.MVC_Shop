@@ -14,9 +14,9 @@ namespace WebsiteBanHang
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Index",
+                name: "DanhSachSanPham",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "DanhSachSanPham", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                name: "ChiTietSanPham",
