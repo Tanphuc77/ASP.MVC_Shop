@@ -326,12 +326,6 @@
     <Content Include="assets\images\product\Samsung Galaxy A54.jpg" />
     <Content Include="assets\images\product\Samsung Galaxy Note 10 Plus.jpg" />
     <Content Include="assets\images\product\Samsung Galaxy S22.jpg" />
-    <Content Include="assets\images\slider\1_1.jpg" />
-    <Content Include="assets\images\slider\1_2.jpg" />
-    <Content Include="assets\images\slider\2_1.jpg" />
-    <Content Include="assets\images\slider\2_2.jpg" />
-    <Content Include="assets\images\slider\3_1.jpg" />
-    <Content Include="assets\images\slider\3_2.jpg" />
     <Content Include="assets\images\slider\4_1.jpg" />
     <Content Include="assets\images\slider\4_2.jpg" />
     <Content Include="assets\img\video-play.html" />
@@ -2466,8 +2460,9 @@
     <Content Include="Views\Admin\HomeAdmin.cshtml" />
     <Content Include="Views\Home\GioiThieu.cshtml" />
     <Content Include="Views\Home\LienHe.cshtml" />
-    <Content Include="Views\QuanLySanPham\ThongTinSanPham.cshtml" />
+    <Content Include="Views\QuanLySanPham\ChinhSua.cshtml" />
     <Content Include="Views\QuanLySanPham\ThemMoi.cshtml" />
+    <Content Include="Views\QuanLySanPham\ThongTinSanPham.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

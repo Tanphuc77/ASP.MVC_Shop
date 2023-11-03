@@ -98,7 +98,7 @@ namespace WebsiteBanHang.Controllers
         }
         public ActionResult SanPhamTheoLoai(int id, int? page)
         {
-            var sanpham = db.SanPhams.Where(s => s.MaLoaiSP == id).ToList();
+            var sanpham = db.SanPhams.Where(s => s.MaLoaiSP == id && s.DaXoa == false ).ToList();
 
             // Thực hiện phân trang theo loại 
             int pageSize = 9;// Số sản phẩm có trên trang 
@@ -109,7 +109,7 @@ namespace WebsiteBanHang.Controllers
         }
         public ActionResult SanPhamTheoNhaSanXuat(int maLoai, int maNSX, int? Page)
         {
-            var sanpham = db.SanPhams.Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai).ToList();
+            var sanpham = db.SanPhams.Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false).ToList();
             int pageSize = 9;
             int pageNumbber = (Page ?? 1);
             

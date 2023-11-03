@@ -1,7 +1,7 @@
 ﻿@model WebsiteBanHang.Models.SanPham
 
 @{
-    ViewBag.Title = "ThemMoi";
+    ViewBag.Title = "ChinhSua";
     Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
 }
 <script src="~/assets/tinymce/js/tinymce/tinymce.min.js"></script> @*sử dụng control editor tinymce*@
@@ -19,7 +19,7 @@
     });
 </script>
 
-@using (Html.BeginForm("ThemMoi", "QuanLySanPham", FormMethod.Post, new
+@using (Html.BeginForm("ChinhSua", "QuanLySanPham", FormMethod.Post, new
 {
     @enctype = "multipart/from-data"
 }))
@@ -29,7 +29,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <label class="control-label col-md-2">Tên sản phẩm</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
             </div>
@@ -37,17 +37,20 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Đơn giá</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DonGia, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-12">
+                @Html.TextBox("DonGia", Model.DonGia.Value.ToString("#,##"), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-md-2">Ngày cập nhật</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayCapNhat, new { htmlAttributes = new { @class = "form-control", @type = "date", @Value = DateTime.Now.ToString("yyyy-MM-dd") } })
-                @Html.ValidationMessageFor(model => model.NgayCapNhat, "", new { @class = "text-danger" })
+            <div class="col-md-12">
+                @if (Model.NgayCapNhat != null)
+                {
+                    @Html.TextBox("NgayCapNhat", Model.NgayCapNhat.Value.ToString("dd/MM/yyyy"), new { @type ="date", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.NgayCapNhat)
+                }
             </div>
         </div>
 
@@ -65,7 +68,7 @@
             <label class="control-label col-md-2">Mô tả</label>
             <div class="col-md-12">
                 <form method="post">
-                    <textarea id="mytextarea" name="MoTa" class="form-control"></textarea>
+                    <textarea id="mytextarea" name="MoTa" class="form-control">@Model.MoTa</textarea>
                 </form>
                 @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
             </div>
@@ -73,7 +76,7 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Số lượng tồn</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
             </div>
@@ -81,7 +84,7 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Lượt xem</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.LuotXem, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.LuotXem, "", new { @class = "text-danger" })
             </div>
@@ -89,7 +92,7 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Lượt bình chọn</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.LuotBinhChon, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.LuotBinhChon, "", new { @class = "text-danger" })
             </div>
@@ -97,7 +100,7 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Lượt bình luận</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.LuotBinhLuan, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.LuotBinhLuan, "", new { @class = "text-danger" })
             </div>
@@ -105,7 +108,7 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Số lần mua</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.SoLanMua, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SoLanMua, "", new { @class = "text-danger" })
             </div>
@@ -113,7 +116,7 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Mới</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.Moi, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Moi, "", new { @class = "text-danger" })
             </div>
@@ -121,7 +124,7 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Nhà cung cấp</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.DropDownList("MaNCC", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MANCC, "", new { @class = "text-danger" })
             </div>
@@ -129,7 +132,7 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Nhà sản xuất</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.DropDownList("MaNSX", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MANSX, "", new { @class = "text-danger" })
             </div>
@@ -137,27 +140,18 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Loại sản phẩm</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 @Html.DropDownList("MaLoaiSP", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MaLoaiSP, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DaXoa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.DaXoa)
-                    @Html.ValidationMessageFor(model => model.DaXoa, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
             <label class="control-label col-md-2">Hình ảnh</label>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <input name="HinhAnh" type="file" />
                 <span style="color:red;font-size:13px">@ViewBag.upload</span>
+                <img src="@Url.Content("~/assets/images/product/"+Model.HinhAnh)" />
             </div>
         </div>
 
@@ -165,8 +159,8 @@
             <label class="control-label col-md-2">Hình ảnh 1</label>
             <div class="col-md-10">
                 <input name="HinhAnh1" type="file" />
-                <span style="color:red;font-size:13px">@ViewBag.upload</span>
                 @Html.ValidationMessageFor(model => model.HinhAnh1, "", new { @class = "text-danger" })
+                <img src="@Url.Content("~/assets/images/product-mini/"+Model.HinhAnh1)" width="250" height="214"/>
             </div>
         </div>
 
@@ -174,8 +168,8 @@
             <label class="control-label col-md-2">Hình ảnh 2</label>
             <div class="col-md-10">
                 <input name="HinhAnh2" type="file" />
-                <span style="color:red;font-size:13px">@ViewBag.upload</span>
                 @Html.ValidationMessageFor(model => model.HinhAnh2, "", new { @class = "text-danger" })
+                <img src="@Url.Content("~/assets/images/product-mini/"+Model.HinhAnh2)" width="250" height="214"/>
             </div>
         </div>
 
@@ -183,8 +177,8 @@
             <label class="control-label col-md-2">Hình ảnh 3</label>
             <div class="col-md-10">
                 <input name="HinhAnh3" type="file" />
-                <span style="color:red;font-size:13px">@ViewBag.upload</span>
                 @Html.ValidationMessageFor(model => model.HinhAnh3, "", new { @class = "text-danger" })
+                <img src="@Url.Content("~/assets/images/product-mini/"+Model.HinhAnh3)" width="250" height="214"/>
             </div>
         </div>
         <div class="form-group">
@@ -212,7 +206,7 @@
         margin-bottom: 5px;
     }
 
-    .form-group .form-control {
+    /*.form-group .form-control {
         width: 120%;
-    }
+    }*/
 </style>
