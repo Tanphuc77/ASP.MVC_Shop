@@ -96,28 +96,6 @@ namespace WebsiteBanHang.Controllers
             Session["TaiKhoan"] = null;
             return RedirectToAction("DanhSachSanPham");
         }
-        public ActionResult SanPhamTheoLoai(int id, int? page)
-        {
-            var sanpham = db.SanPhams.Where(s => s.MaLoaiSP == id && s.DaXoa == false ).ToList();
-
-            // Thực hiện phân trang theo loại 
-            int pageSize = 9;// Số sản phẩm có trên trang 
-            int pageNumbber = (page ?? 1); // số trang hiện tại
-
-            ViewBag.MaLoai = id;
-            return View(sanpham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
-        }
-        public ActionResult SanPhamTheoNhaSanXuat(int maLoai, int maNSX, int? Page)
-        {
-            var sanpham = db.SanPhams.Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false).ToList();
-            int pageSize = 9;
-            int pageNumbber = (Page ?? 1);
-            
-            ViewBag.MaLoai = maLoai;
-            ViewBag.MaNSX = maNSX;
-
-            return View(sanpham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
-        }
         public ActionResult SlideNhaSanXuatPartial()
         {
             var nhaSanXuat = db.NhaSanXuats.ToList();
@@ -139,6 +117,5 @@ namespace WebsiteBanHang.Controllers
         {
             return View();
         }
-
     }
 }

@@ -22,7 +22,7 @@ namespace WebsiteBanHang.Controllers
             return PartialView();
         }
         // xây dựng trang xem chi tiết
-        public ActionResult ChiTietSanPham(int? id,string tensp)
+        public ActionResult ChiTietSanPham(int? id, string tensp)
         {
             var sanpham = db.SanPhams.SingleOrDefault(s => s.MaSP == id);
             return View(sanpham);
@@ -32,62 +32,75 @@ namespace WebsiteBanHang.Controllers
             var sanPham = db.SanPhams.ToList();
             return View(sanPham);
         }
-        public ActionResult DonGiaPartial()
+        public ActionResult SanPhamTheoLoai(int maLoai, int? page)
         {
+            var sanpham = db.SanPhams.Where(s => s.MaLoaiSP == maLoai && s.DaXoa == false).ToList();
+
+            // Thực hiện phân trang theo loại 
+            int pageSize = 12;// Số sản phẩm có trên trang 
+            int pageNumbber = (page ?? 1); // số trang hiện tại
+
+            ViewBag.MaLoai = maLoai;
+            return View(sanpham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+        }
+        public ActionResult SanPhamTheoNhaSanXuat(int maLoai, int maNSX, int? Page)
+        {
+            var sanpham = db.SanPhams.Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false).ToList();
+            int pageSize = 9;
+            int pageNumbber = (Page ?? 1);
+
+            ViewBag.MaLoai = maLoai;
+            ViewBag.MaNSX = maNSX;
+
+            return View(sanpham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+        }
+        public ActionResult DonGia(int? maLoai, int? maNSX)
+        {
+            var sanPham = db.SanPhams.Where(m => m.MaLoaiSP == maLoai && m.MANSX == maNSX && m.DaXoa == false).ToList();
+            ViewBag.MaLoai = maLoai;
+            ViewBag.MaNSX = maNSX;
             return PartialView();
         }
-        public ActionResult DonGia ()
-        {
-            return PartialView();
-        }
-        public ActionResult SidebarDonGia1_5(int? maNSX, int? Page)
+        public ActionResult SanPhamTheoNhaSanXuatDonGia(int? maLoai, int? maNSX, int? Page, string priceRange)
         {
             int pageSize = 9;
             int pageNumbber = (Page ?? 1);
-            var sanPham = db.SanPhams.Where(m => m.MANSX == maNSX && m.DonGia <= 5000000).ToList();
-            return View(sanPham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+            // Xử lý tùy theo phạm vi giá
+            switch (priceRange)
+            {
+                case "1-5":
+                    var sanPham = db.SanPhams
+                        .Where(m => m.MaLoaiSP == maLoai  && m.MANSX == maNSX && m.DaXoa == false && m.DonGia >= 1000000 && m.DonGia <= 5000000).ToList();
+                    return View(sanPham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+                case "5-10":
+                    var sanPham1 = db.SanPhams
+                        .Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false && m.DonGia > 5000000 && m.DonGia <= 10000000).ToList();
+                    return View(sanPham1.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+                case "10-15":
+                    var sanPham2 = db.SanPhams
+                        .Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false && m.DonGia > 10000000 && m.DonGia <= 15000000).ToList();
+                    return View(sanPham2.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+                case "15-30":
+                    var sanPham3 = db.SanPhams
+                        .Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false && m.DonGia > 15000000 && m.DonGia <= 30000000).ToList();
+                    return View(sanPham3.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+                case "30-50":
+                    var sanPham4 = db.SanPhams
+                        .Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false && m.DonGia > 30000000 && m.DonGia <= 50000000).ToList();
+                    return View(sanPham4.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+                case "50-100":
+                    var sanPham5 = db.SanPhams
+                        .Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false && m.DonGia >= 50000000 && m.DonGia <= 100000000).ToList();
+                    return View(sanPham5.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+                case "Tren100":
+                    var sanPham6 = db.SanPhams
+                        .Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false && m.DonGia > 1000000).ToList();
+                    return View(sanPham6.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+                // Thêm các phạm vi giá khác nếu cần
+                default:
+                    // Xử lý khi không có phạm vi giá được chọn
+                    return View();
+            }
         }
-        //public ActionResult SidebarDonGia5_10( int? Page)
-        //{
-        //    var sanPham = db.SanPhams.Where(m =>  m.DonGia > 5000000 && m.DonGia <= 10000000).ToList();
-        //    int pageSize = 9;
-        //    int pageNumbber = (Page ?? 1);
-        //    return View(sanPham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
-        //}
-        //public ActionResult SidebarDonGia10_15( int? Page)
-        //{
-        //    var sanPham = db.SanPhams.Where(m =>  m.DonGia >= 10000000 && m.DonGia <= 15000000).ToList();
-        //    int pageSize = 9;
-        //    int pageNumbber = (Page ?? 1);
-        //    return View(sanPham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
-        //}
-        //public ActionResult SidebarDonGia15_30( int? Page)
-        //{
-        //    var sanPham = db.SanPhams.Where(m =>  m.DonGia > 15000000 && m.DonGia <= 30000000).ToList();
-        //    int pageSize = 9;
-        //    int pageNumbber = (Page ?? 1);
-        //    return View(sanPham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
-        //}
-        //public ActionResult SidebarDonGia30_50( int? Page)
-        //{
-        //    var sanPham = db.SanPhams.Where(m =>  m.DonGia > 30000000 && m.DonGia <= 50000000).ToList();
-        //    int pageSize = 9;
-        //    int pageNumbber = (Page ?? 1);
-        //    return View(sanPham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
-        //}
-        //public ActionResult SidebarDonGia50_100( int? Page)
-        //{
-        //    var sanPham = db.SanPhams.Where(m =>  m.DonGia > 50000000 && m.DonGia <= 100000000).ToList();
-        //    int pageSize = 9;
-        //    int pageNumbber = (Page ?? 1);
-        //    return View(sanPham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
-        //}
-        //public ActionResult SidebarDonGiaTren100( int? Page)
-        //{
-        //    var sanPham = db.SanPhams.Where(m =>  m.DonGia > 100000000).ToList();
-        //    int pageSize = 9;
-        //    int pageNumbber = (Page ?? 1);
-        //    return View(sanPham.OrderBy(m => m.MaSP).ToPagedList(pageNumbber, pageSize));
-        //}
     }
 }

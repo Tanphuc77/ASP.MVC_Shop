@@ -2440,8 +2440,8 @@
     <Content Include="Views\Home\DangNhap.cshtml" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
-    <Content Include="Views\Home\SanPhamTheoLoai.cshtml" />
-    <Content Include="Views\Home\SanPhamTheoNhaSanXuat.cshtml" />
+    <Content Include="Views\SanPham\SanPhamTheoLoai.cshtml" />
+    <Content Include="Views\SanPham\SanPhamTheoNhaSanXuat.cshtml" />
     <Content Include="Views\SanPham\Sanphamstyle2Partial.cshtml" />
     <Content Include="Views\GioHang\XemGioHang.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
@@ -2463,6 +2463,7 @@
     <Content Include="Views\QuanLySanPham\ChinhSua.cshtml" />
     <Content Include="Views\QuanLySanPham\ThemMoi.cshtml" />
     <Content Include="Views\QuanLySanPham\ThongTinSanPham.cshtml" />
+    <Content Include="Views\SanPham\SanPhamTheoNhaSanXuatDonGia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
