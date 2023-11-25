@@ -47,15 +47,14 @@ else
                                     {
                                         <tr>
                                             <td class="fb-product-thumbnail" style="width:90px; height:90px;"><img src="@Url.Content("~/assets/images/product/" + item.HinhAnh)" alt="FB's Product Image" /></td>
-                                            <td class="fb-product-name"><a href="@Url.Action("ChiTietSanPham", "Sanpham", new { id = item.MaSP, @tensp = item.TenSP })">@item.TenSP</a></td>
+                                            <td class="fb-product-name"><a href="@Url.Action("ChiTietSanPham", "Sanpham", new { maLoai = item.MaLoai, maNSX = item.MaNSX, id = item.MaSP, @tensp = item.TenSP })">@item.TenSP</a></td>
                                             <td class="fb-product-price"><span class="amount">@item.DonGia.ToString("#,##")₫</span></td>
                                             <td class="quantity">
                                                 <label>Số lượng</label>
-                                                <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="@item.SoLuong" type="text">
+                                                <div class="cart-plus-minus" data-maSP="@item.MaSP">
+                                                    <input class="cart-plus-minus-box" value="@item.SoLuong" type="text" readonly>
                                                     <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div><div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </td>
                                             <td class="product-subtotal"><span class="amount">@item.ThanhTien.ToString("#,##")₫</span></td>
@@ -67,15 +66,6 @@ else
                                 </tbody>
                             </table>
                         </div>
-                        @*<div class="row">
-                                <div class="col-12">
-                                    <div class="coupon-all">
-                                        <div class="coupon2">
-                                            <input class="button" name="update_cart" value="Update cart" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>*@
                         <div class="row" style="margin-top:25px">
                             <div class="col-md-5 ms-auto" style="margin-top:7px">
                                 <div class="cart-page-total">
@@ -94,3 +84,29 @@ else
         </div>
     </div>
 }
+<script>
+    $(document).ready(function () {
+        $(".qtybutton").on("click", function () {
+            var maSP = $(this).closest(".cart-plus-minus").data("maSP");
+            var action = $(this).hasClass("inc") ? "tang" : "giam";
+
+            $.ajax({
+                url: "/GioHang/CapNhatSoLuong",
+                type: "POST",
+                data: { maSP: maSP, action: action },
+                success: function (data) {
+                    // Cập nhật giao diện với dữ liệu mới từ server
+                    $(".cart-plus-minus-box[data-maSP='" + maSP + "']").val(data.ThanhTien);
+                    $(".product-subtotal[data-maSP='" + maSP + "']").html("<span class='amount'>" + data.ThanhTien.toString("#,##") + "₫</span>");
+
+                    // Cập nhật tổng tiền và số lượng tổng
+                    $("#tongSoLuong").html(data.TinhSoLuong);
+                    $("#tongTien").html(data.TongTien.toString("#,##") + "₫");
+                },
+                error: function () {
+                    alert("Đã xảy ra lỗi khi cập nhật số lượng.");
+                }
+            });
+        });
+    });
+</script>

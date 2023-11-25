@@ -2454,7 +2454,6 @@
     <Content Include="Views\Layout\_LayoutSlide.cshtml" />
     <Content Include="Views\Home\SlideNhaSanXuatPartial.cshtml" />
     <Content Include="Views\Home\SlideChiTietNhaSanXuat.cshtml" />
-    <Content Include="Views\SanPham\SidebarDonGia1_5.cshtml" />
     <Content Include="Views\SanPham\DonGia.cshtml" />
     <Content Include="Views\Layout\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\HomeAdmin.cshtml" />
@@ -2464,6 +2463,9 @@
     <Content Include="Views\QuanLySanPham\ThemMoi.cshtml" />
     <Content Include="Views\QuanLySanPham\ThongTinSanPham.cshtml" />
     <Content Include="Views\SanPham\SanPhamTheoNhaSanXuatDonGia.cshtml" />
+    <Content Include="Views\Home\SanPhamMoi.cshtml" />
+    <Content Include="Views\SanPham\SanPhamLienQuan.cshtml" />
+    <Content Include="Views\Home\TaiKhoanCuaToi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

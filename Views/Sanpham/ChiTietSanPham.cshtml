@@ -2,7 +2,7 @@
     ViewBag.Title = "Xemchitiet";
     Layout = "~/Views/Layout/_LayoutHomeProduct.cshtml";
 }
-<div class="page-content" style="background-color:#f1f1f1; padding-top:50px">
+<div class="page-content" style="background-color:#f1f1f1; padding:50px 0">
     <!-- Product Details Area -->
     <div class="product-details-area">
         <div class="container">
@@ -82,7 +82,7 @@
                                     </ul>
                                 </div>
                                 <div class="price-box pb-10">
-                                    <span class="new-price">@Model.DonGia.ToString("#,##") VND</span>
+                                    <span class="new-price">@Model.DonGia.ToString("#,## ₫")</span>
                                 </div>
                                 <div class="product-desc">
                                     <p>
@@ -96,7 +96,7 @@
                                         <div class="quantity">
                                             <label>Số lượng</label>
                                             <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" value="1" type="text">
+                                                <input class="cart-plus-minus-box" value="1" type="text" readonly>
                                                 <div class="dec qtybutton">
                                                     <i class="fa fa-angle-down"></i>
                                                 </div>
@@ -105,7 +105,7 @@
                                         </div>
                                         @if (Session["TaiKhoan"] != null)
                                         {
-                                            <a class="fb-btn" href="@Url.Action("ThemGioHang","GioHang",new { @maSP = Model.MaSP , @strULR = Request.Url.ToString() })" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a>
+                                            <a class="fb-btn" href="@Url.Action("ThemGioHang", "GioHang", new { @maSP = Model.MaSP, @strULR = Request.Url.ToString() })" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a>
                                         }
                                         else
                                         {
@@ -191,7 +191,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="fb-product-tab">
-                        <ul class="nav fb-product-menu">
+                        <ul class="nav fb-product-menu" style="background-color:white">
                             <li>
                                 <a class="active" data-bs-toggle="tab"
                                    href="#description"><span>Description</span></a>
@@ -356,5 +356,5 @@
             </div>
         </div>
     </div>
-    <!-- Product Area End Here -->
 </div>
+@Html.Action("SanPhamLienQuan", new { maLoai = Model.MaLoaiSP, maNSX = Model.MANSX, maSP = Model.MaSP })

@@ -8,18 +8,26 @@ using CaptchaMvc.HtmlHelpers;
 using CaptchaMvc;
 using PagedList;
 using BCrypt.Net;
+using System.Data.Entity;
+using System.Net;
+
 namespace WebsiteBanHang.Controllers
 {
     public class HomeController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         // GET: Home
-        public ActionResult DanhSachSanPham(int? page)    
+        public ActionResult DanhSachSanPham(int? page)
         {
             var sanPham = db.SanPhams.Where(m => m.MaLoaiSP == 1 && m.DaXoa == false).OrderBy(m => m.DonGia).ToList();
             int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(sanPham.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult SanPhamMoi()
+        {
+            var sanpham = db.SanPhams.Where(s => s.DaXoa == false).OrderByDescending(s => s.NgayCapNhat).Take(10).ToList();
+            return View(sanpham);
         }
         public ActionResult Menupartial()
         {
@@ -84,8 +92,8 @@ namespace WebsiteBanHang.Controllers
                 bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(Password, thanhVien.MatKhau);
                 if (isPasswordCorrect)
                 {
-                Session["TaiKhoan"] = thanhVien;
-                return RedirectToAction("DanhSachSanPham");
+                    Session["TaiKhoan"] = thanhVien;
+                    return RedirectToAction("DanhSachSanPham");
                 }
             }
             TempData["ThongBao"] = "Tài khoản hoặc mật khẩu không đúng";
@@ -94,6 +102,7 @@ namespace WebsiteBanHang.Controllers
         public ActionResult DangXuat()
         {
             Session["TaiKhoan"] = null;
+            Session["GioHang"] = null;
             return RedirectToAction("DanhSachSanPham");
         }
         public ActionResult SlideNhaSanXuatPartial()
@@ -108,6 +117,11 @@ namespace WebsiteBanHang.Controllers
             int pageNumbber = (Page ?? 1);
             ViewBag.MaNSX = maNSX;
             return View(sanpham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
+        }
+        public ActionResult TaiKhoanCuaToi(int? id)
+        {
+            ThanhVien thanhVien = db.ThanhViens.SingleOrDefault(m => m.MaTV == id);
+            return View(thanhVien);
         }
         public ActionResult GioiThieu()
         {

@@ -39,17 +39,13 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Header Top Left Area End Here -->
-                <!-- Begin Header Top Right Area -->
                 <div class="col-lg-7 col-md-6">
                     <div class="header-top-right">
                         <ul class="user-block list-inline">
-                            @*<li><a href="login-register.html">My Account</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>*@
                             @if (Session["TaiKhoan"] != null)
                             {
                                 ThanhVien thanhVien = (ThanhVien)Session["TaiKhoan"];
-                                <i class="fa-solid fa-user" style="font-size:13px;margin:6px 5px 0 0"></i>
+                                <i class="fa-solid fa-user" style="font-size:13px; margin:6px 5px 0 0"></i>
                                 <ul class="single-top-selector">
                                     <li class="currency list-inline-item">
                                         <span style="font-size:13px;">@thanhVien.HoTen</span>
@@ -59,7 +55,7 @@
                                             </button>
                                             <div class="dropdown-menu" style="width:150px">
                                                 <ul>
-                                                    <li><a href="#">Tài Khoản của tôi</a></li>
+                                                    <li><a href="~/Home/TaiKhoanCuaToi">Tài Khoản của tôi</a></li>
                                                     <li>@Html.ActionLink("Đăng xuất", "DangXuat", "Home")</li>
                                                 </ul>
                                             </div>
@@ -75,9 +71,7 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Header Top Right Area End Here -->
             </div>
         </div>
     </div>
 </div>
-<!-- Header Top Area End Here -->

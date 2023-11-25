@@ -1,0 +1,50 @@
+﻿@using WebsiteBanHang.Models
+@{
+    ViewBag.Title = "TaiKhoanCuaToi";
+    Layout = "~/Views/Layout/_LayoutHomeProduct.cshtml";
+    ThanhVien thanhVien = (ThanhVien)Session["TaiKhoan"];
+}
+<div class="page-section pt-60 pb-60">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
+                <form action="#">
+                    <div class="login-form">
+                        <h4 class="login-title">Tài Khoản Của Tôi</h4>
+                        <div class="row">
+                            <div class="col-md-6 col-12 mb-20">
+                                <label>Họ Tên</label>
+                                <input class="mb-0" type="text" placeholder="@thanhVien.HoTen" readonly>
+                            </div>
+                            <div class="col-md-6 col-12 mb-20">
+                                <label>Tài Khoản</label>
+                                <input class="mb-0" type="text" placeholder="@thanhVien.TaiKhoan" readonly>
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label>Số Điện Thoại</label>
+                                <input class="mb-0" type="text" placeholder="@thanhVien.SoDienThoai" readonly>
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label>Email</label>
+                                <input class="mb-0" type="text" placeholder="@thanhVien.Email" readonly>
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label>Địa Chỉ</label>
+                                <input class="mb-0" type="text" placeholder="@thanhVien.DiaChi" readonly>
+                            </div>
+
+                            <div class="col-md-6 mb-20">
+                                <label>Loại Thành Viên</label>
+                                <input class="mb-0" type="text" placeholder="@ViewBag.TenLoaiThanhVien" readonly>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="register-button mt-0">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

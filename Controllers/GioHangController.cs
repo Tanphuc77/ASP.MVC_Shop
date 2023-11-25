@@ -251,5 +251,17 @@ namespace WebsiteBanHang.Controllers
             Session["GioHang"] = null;
             return RedirectToAction("XemGioHang", "GioHang");
         }
+        [HttpPost]
+        public ActionResult CapNhatSoLuong(int maSP, string action)
+        {
+            // Cập nhật số lượng trong session hoặc database (tùy thuộc vào cách bạn lưu trữ giỏ hàng)
+            // ...
+            List<ItemGioHang> lstDonDatHang = LayGioHang();
+            // Lấy dữ liệu mới để trả về
+            double newTinhSoLuong = TinhTongSoLuong();
+            decimal newTongTien = TinhTongTien();
+
+            return Json(new { TinhSoLuong = newTinhSoLuong, TongTien = newTongTien });
+        }
     }
 }

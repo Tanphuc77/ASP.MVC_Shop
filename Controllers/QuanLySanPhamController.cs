@@ -17,6 +17,7 @@ namespace WebsiteBanHang.Controllers
         [HttpGet]
         public ActionResult ThemMoi()
         {
+            // Load Drowpdowlist
             ViewBag.MaNCC = new SelectList(db.NhaCungCaps.OrderBy(m => m.TenNCC), "MaNCC", "TenNCC");
             ViewBag.MaLoaiSP = new SelectList(db.LoaiSanPhams.OrderBy(m => m.TenLoai), "MaLoaiSP", "TenLoai");
             ViewBag.MaNSX = new SelectList(db.NhaSanXuats.OrderBy(m => m.TenNSX), "MaNSX", "TenNSX");

@@ -13,6 +13,8 @@ namespace WebsiteBanHang.Models
         public decimal DonGia { get; set; }
         public decimal ThanhTien { get; set; }
         public string HinhAnh { get; set; }
+        public int MaLoai { get; set; }
+        public int MaNSX { get; set; }
         public ItemGioHang(int maSP)
         {
             using (QuanLyBanHangEntities db = new QuanLyBanHangEntities())
@@ -23,6 +25,8 @@ namespace WebsiteBanHang.Models
                 this.HinhAnh = sanPham.HinhAnh;
                 this.DonGia = sanPham.DonGia.Value;
                 this.ThanhTien = DonGia * SoLuong;
+                this.MaLoai = (int)sanPham.MaLoaiSP;
+                this.MaNSX = (int)sanPham.MANSX;
             }
         }
         public ItemGioHang(int maSP, int soLuong)
@@ -37,6 +41,8 @@ namespace WebsiteBanHang.Models
                 this.SoLuong = soLuong;
                 this.SoLuong = 1;
                 this.ThanhTien = DonGia * SoLuong;
+                this.MaLoai = (int)sanPham.MaLoaiSP;
+                this.MaNSX = (int)sanPham.MANSX;
             }
         }
     }

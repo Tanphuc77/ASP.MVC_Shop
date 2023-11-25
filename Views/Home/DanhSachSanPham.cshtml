@@ -5,6 +5,22 @@
     ViewBag.Title = "DanhSachSanPham";
     Layout = "~/Views/Layout/_LayoutHome.cshtml";
 }
+<header class="bg-midnight header-4">
+    <div class="header-top bg-white">
+        <div class="container">
+            <div class="header-top-nav">
+                <div class="row">
+                    @Html.Partial("~/views/layout/_layoutheadertop.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Action("Menupartial", "Home")
+    @Html.Partial("~/Views/Layout/_LayoutSearch.cshtml")
+</header>
+@Html.Partial("~/Views/Layout/_LayoutSlide.cshtml")
+@Html.Action("SlideNhaSanXuatPartial", "Home")
+@Html.Action("SanPhamMoi", "Home")
 <div class="content-wraper">
     <div class="container">
         <div class="row">
@@ -14,7 +30,7 @@
                 </div>
                 <!-- FB's Banner Area End Here -->
                 <!-- shop-top-bar start -->
-                <div class="shop-top-bar mt-25">
+                <div class="shop-top-bar mt-30">
                     <div class="shop-bar-inner">
                         <div class="product-view-mode">
                             <!-- shop-item-filter-list start -->
@@ -53,13 +69,13 @@
                                 <li>
                                     @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
                                 </li>
-                                <li style="float:right">@Html.PagedListPager(Model, Page => @Url.Action("DanhSachSanPham", new { Page = Page}))</li>
+                                <li style="float:right">@Html.PagedListPager(Model, Page => @Url.Action("DanhSachSanPham", new { Page = Page }))</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- shop-products-wrapper end -->
     </div>
 </div>
+@Html.Partial("~/Views/Layout/_Layoutfooter.cshtml")
