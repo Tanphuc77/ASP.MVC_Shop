@@ -8,7 +8,7 @@
 }
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">
-        <a class="btn btn-primary" href="@Url.Action("ThemMoi","QuanLySanPham")" style="margin-left:28px">Thêm mới</a>
+        <a class="btn btn-primary" href="@Url.Action("ThemMoi", "QuanLySanPham")" style="margin-left:28px">Thêm mới</a>
     </div>
 </div>
 @gird.GetHtml(
@@ -22,8 +22,9 @@
     gird.Column("TenSP", "Tên sản phẩm"),
     gird.Column("MoTa", "Mô tả", format: p => Html.Raw(p.MoTa)),
     gird.Column("CauHinh", "Cấu hình", format: p => Html.Raw(p.CauHinh)),
-    gird.Column("HinhAnh", "Hình ảnh", format: p => Html.Raw("<img src =\"../assets/images/product/" + p.HinhAnh + "\">"))
-
+    gird.Column("HinhAnh", "Hình ảnh", format: p => Html.Raw("<img src =\"../assets/images/product/" + p.HinhAnh + "\">")),
+    gird.Column("Chức năng", format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaSP })),
+    gird.Column("Chức năng", format: p => Html.ActionLink("Xóa", "Remove", new { id = p.MaSP }))
     ))
 <style>
     .Table {

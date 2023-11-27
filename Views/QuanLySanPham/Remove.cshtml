@@ -1,7 +1,7 @@
 ﻿@model WebsiteBanHang.Models.SanPham
 
 @{
-    ViewBag.Title = "ChinhSua";
+    ViewBag.Title = "Xoa";
     Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
 }
 <script src="~/assets/tinymce/js/tinymce/tinymce.min.js"></script> @*sử dụng control editor tinymce*@
@@ -19,7 +19,7 @@
     });
 </script>
 
-@using (Html.BeginForm("ChinhSua", "QuanLySanPham", FormMethod.Post, new
+@using (Html.BeginForm("Remove", "QuanLySanPham", FormMethod.Post, new
 {
     @enctype = "multipart/from-data"
 }))
@@ -186,7 +186,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Lưu" class="btn btn-primary" />
+            <input type="submit" value="Xác nhận" class="btn btn-danger" />
         </div>
     </div>
 </div>
@@ -213,3 +213,4 @@
         width: 120%;
     }*/
 </style>
+

@@ -118,6 +118,7 @@ namespace WebsiteBanHang.Controllers
             ViewBag.MaNSX = maNSX;
             return View(sanpham.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
         }
+        [HttpGet]
         public ActionResult TaiKhoanCuaToi(int? id)
         {
             ThanhVien thanhVien = db.ThanhViens.SingleOrDefault(m => m.MaTV == id);

@@ -9,38 +9,40 @@
         <div class="row">
             <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
                 <form action="#">
-                    <div class="login-form">
-                        <h4 class="login-title">Tài Khoản Của Tôi</h4>
+                    <div class="login-form" style=" box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.4);">
                         <div class="row">
                             <div class="col-md-6 col-12 mb-20">
                                 <label>Họ Tên</label>
-                                <input class="mb-0" type="text" placeholder="@thanhVien.HoTen" readonly>
+                                <input class="mb-0" type="text" value="@thanhVien.HoTen">
                             </div>
                             <div class="col-md-6 col-12 mb-20">
                                 <label>Tài Khoản</label>
-                                <input class="mb-0" type="text" placeholder="@thanhVien.TaiKhoan" readonly>
+                                <input class="mb-0" type="text" value="@thanhVien.TaiKhoan" >
                             </div>
                             <div class="col-md-6 mb-20">
                                 <label>Số Điện Thoại</label>
-                                <input class="mb-0" type="text" placeholder="@thanhVien.SoDienThoai" readonly>
+                                <input class="mb-0" type="text" value="@thanhVien.SoDienThoai" >
                             </div>
                             <div class="col-md-6 mb-20">
                                 <label>Email</label>
-                                <input class="mb-0" type="text" placeholder="@thanhVien.Email" readonly>
+                                <input class="mb-0" type="text" value="@thanhVien.Email" >
                             </div>
                             <div class="col-md-6 mb-20">
                                 <label>Địa Chỉ</label>
-                                <input class="mb-0" type="text" placeholder="@thanhVien.DiaChi" readonly>
+                                <input class="mb-0" type="text" value="@thanhVien.DiaChi" >
                             </div>
-
-                            <div class="col-md-6 mb-20">
-                                <label>Loại Thành Viên</label>
-                                <input class="mb-0" type="text" placeholder="@ViewBag.TenLoaiThanhVien" readonly>
-                            </div>
-
-                            <div class="col-12">
-                                <button class="register-button mt-0">Chỉnh sửa</button>
-                            </div>
+                            @{
+                                WebsiteBanHang.Models.QuanLyBanHangEntities db = new WebsiteBanHang.Models.QuanLyBanHangEntities();
+                                var loai = db.LoaiThanhViens.Find(thanhVien.MaLoaiTV);
+                                if (loai != null)
+                                {
+                                    <div class="col-md-6 mb-20">
+                                        <label>Loại Thành Viên</label>
+                                        <input class="mb-0" type="text" value="@loai.TenLoai" >
+                                    </div>
+                                }
+                            }
+                           
                         </div>
                     </div>
                 </form>

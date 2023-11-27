@@ -1,7 +1,7 @@
 ﻿@model WebsiteBanHang.Models.SanPham
 
 @{
-    ViewBag.Title = "ThemMoi";
+    ViewBag.Title = "ChinhSua";
     Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
 }
 <script src="~/assets/tinymce/js/tinymce/tinymce.min.js"></script> @*sử dụng control editor tinymce*@
@@ -19,10 +19,7 @@
     });
 </script>
 
-@using (Html.BeginForm("ThemMoi", "QuanLySanPham", FormMethod.Post, new
-{
-    @enctype = "multipart/from-data"
-}))
+@using (Html.BeginForm("ThemMoi", "QuanLySanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -53,10 +50,8 @@
 
         <div class="form-group">
             <label class="control-label col-md-2">Cấu hình</label>
-            <div class="col-md-12">
-                <form method="post">
-                    <textarea id="mytextarea" name="CauHinh" class="form-control"></textarea>
-                </form>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CauHinh, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CauHinh, "", new { @class = "text-danger" })
             </div>
         </div>
