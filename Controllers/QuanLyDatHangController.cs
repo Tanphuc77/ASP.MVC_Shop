@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebsiteBanHang.Models;
+using System.Net.Mail;
+namespace WebsiteBanHang.Controllers
+{
+    public class QuanLyDatHangController : Controller
+    {
+        QuanLyBanHangEntities db = new QuanLyBanHangEntities();
+        // GET: QuanLyDatHang
+        public ActionResult ChuaThanhToan()
+        {
+            var Unpaid = db.DonDatHangs.Where(m => m.DaThanhToan == false).OrderBy(m => m.NgayDat).ToList();
+            return View(Unpaid);
+        }
+        public ActionResult ChuaGiao()
+        {
+            var Unpaid = db.DonDatHangs.Where(m => m.TinhTrangGiaoHang == false && m.DaThanhToan == true).OrderBy(m => m.NgayDat).ToList();
+            return View(Unpaid);
+        }
+        public ActionResult DaGiaoDaThanhToan()
+        {
+            var Unpaid = db.DonDatHangs.Where(m => m.TinhTrangGiaoHang == true && m.DaThanhToan == true).OrderBy(m => m.NgayDat).ToList();
+            return View(Unpaid);
+        }
+        [HttpGet]
+        public ActionResult DuyetDonHang(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            DonDatHang donDatHang = db.DonDatHangs.SingleOrDefault(m => m.MaDDH == id);
+            if(donDatHang == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Hiển thị thi tiết đơn hàng lên view
+            var listChiTietDonHang = db.ChiTietDonDatHangs.Where(m => m.MaDDH == id);
+            ViewBag.ChiTietDonDatHang = listChiTietDonHang;
+
+            return View(donDatHang);
+        }
+        [HttpPost]
+        public ActionResult DuyetDonHang(DonDatHang model)
+        {
+            // Truy vấn dữ liệu đơn hàng đó
+            DonDatHang updateDDH = db.DonDatHangs.SingleOrDefault(m => m.MaDDH == model.MaDDH);
+            updateDDH.DaThanhToan = model.DaThanhToan;
+            updateDDH.TinhTrangGiaoHang = model.TinhTrangGiaoHang;
+            db.SaveChanges();
+
+            var listChiTietDonHang = db.ChiTietDonDatHangs.Where(m => m.MaDDH == model.MaDDH);
+            ViewBag.ChiTietDonDatHang = listChiTietDonHang;
+
+            return View(updateDDH);
+        }
+        public void GuiMail(string Title, string ToEmail, string FromEmail, string PassWork, string Content)
+        {
+            // Gọi mail 
+            MailMessage mail = new MailMessage();
+            mail.To.Add(ToEmail);// địa chỉ nhận     
+            mail.From = new MailAddress(ToEmail); // địa chỉ gửi
+            mail.Subject = Title;
+            mail.Body = Content;
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com"; // host gửi gmail 
+            smtp.Port = 578;// port của mail
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential(FromEmail, PassWork);// Tài khoản passwork người gửi 
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+        }
+    }
+}

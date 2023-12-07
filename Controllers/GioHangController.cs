@@ -203,7 +203,7 @@ namespace WebsiteBanHang.Controllers
             return RedirectToAction("XemGioHang", "GioHang");
         }
         [HttpPost]
-        public ActionResult MuaHang(KhachHang khachHang)
+        public ActionResult MuaHang()
         {
             // Kiểm tra session đã tồn tại hay chưa 
             if (Session["GioHang"] == null)
@@ -219,7 +219,7 @@ namespace WebsiteBanHang.Controllers
                 kH.DiaChi = tv.DiaChi;
                 kH.Email = tv.Email;
                 kH.SoDienThoai = tv.SoDienThoai;
-                kH.MaTV = tv.MaLoaiTV;
+                kH.MaTV = tv.MaTV;
                 db.KhachHangs.Add(kH);
                 db.SaveChanges();
             }
