@@ -13,6 +13,14 @@ namespace WebsiteBanHang
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Application["SoNguoiTruyCap"] = 0;
+        }
+        protected void Session_Start()
+        {
+            Application.Lock();// ?ong bo hoa
+            Application["SoNguoiTruyCap"] = (int)Application["SoNguoiTruyCap"] + 1;
+            Application.UnLock();
         }
     }
 }

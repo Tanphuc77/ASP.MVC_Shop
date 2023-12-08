@@ -33,6 +33,7 @@
                     <th>
                         Tên khách hàng
                     </th>
+                    <th>Chức năng</th>
                 </tr>
             </thead>
 
@@ -91,6 +92,9 @@
                         </td>
                         <td>
                             @item.KhachHang.TenKH
+                        </td>
+                        <td>
+                            <a href="@Url.Action("ChiTietDonHang", "QuanLyDatHang", new{ id = item.MaDDH })">Chi tiết đơn hàng</a>
                         </td>
                     </tr>
                 }

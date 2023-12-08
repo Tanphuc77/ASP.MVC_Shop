@@ -57,9 +57,9 @@ namespace WebsiteBanHang.Controllers
             var listChiTietDonHang = db.ChiTietDonDatHangs.Where(m => m.MaDDH == model.MaDDH);
             ViewBag.ChiTietDonDatHang = listChiTietDonHang;
 
-            return View(updateDDH);
+            return RedirectToAction("ChuaThanhToan");
         }
-        public void GuiMail(string Title, string ToEmail, string FromEmail, string PassWork, string Content)
+        public void GuiMail(string Title, string ToEmail, string FromEmail, string PassWord, string Content)
         {
             // Gọi mail 
             MailMessage mail = new MailMessage();
@@ -72,9 +72,28 @@ namespace WebsiteBanHang.Controllers
             smtp.Host = "smtp.gmail.com"; // host gửi gmail 
             smtp.Port = 578;// port của mail
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential(FromEmail, PassWork);// Tài khoản passwork người gửi 
+            smtp.Credentials = new System.Net.NetworkCredential(FromEmail, PassWord);// Tài khoản passwork người gửi 
             smtp.EnableSsl = true;
             smtp.Send(mail);
+        }
+
+        public ActionResult ChiTietDonHang (int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            DonDatHang donDatHang = db.DonDatHangs.SingleOrDefault(m => m.MaDDH == id);
+            if (donDatHang == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Hiển thị thi tiết đơn hàng lên view
+            var listChiTietDonHang = db.ChiTietDonDatHangs.Where(m => m.MaDDH == id);
+            ViewBag.ChiTietDonDatHang = listChiTietDonHang;
+
+            return View(donDatHang);
         }
     }
 }

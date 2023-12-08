@@ -4,7 +4,7 @@
     ViewBag.Title = "DuyetDonHang";
     Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
 }
- @{ IEnumerable<WebsiteBanHang.Models.ChiTietDonDatHang> chiTietDonDatHangs = (IEnumerable<WebsiteBanHang.Models.ChiTietDonDatHang>)ViewBag.ChiTietDonDatHang;}
+@{ IEnumerable<WebsiteBanHang.Models.ChiTietDonDatHang> chiTietDonDatHangs = (IEnumerable<WebsiteBanHang.Models.ChiTietDonDatHang>)ViewBag.ChiTietDonDatHang;}
 @using (Html.BeginForm())
 {
     <div class="card-body">
@@ -16,7 +16,7 @@
                     <tr>
                         <td>
                             Mã đơn hàng:
-                            @Model.MaDDH @Html.Hidden("MaDDH",Model.MaDDH)
+                            @Model.MaDDH @Html.Hidden("MaDDH", Model.MaDDH)
                         </td>
                         <td>
                             Tên khách hàng:
@@ -28,11 +28,11 @@
                         </td>
                         <td>
                             Đã thanh toán:
-                            @Html.EditorFor(model => model.DaThanhToan)
+                            @Model.DaThanhToan
                         </td>
                         <td>
                             Tình trạng giao hàng:
-                            @Html.EditorFor(model => model.TinhTrangGiaoHang)
+                            @Model.TinhTrangGiaoHang
                         </td>
                     </tr>
                     @foreach (var item in chiTietDonDatHangs)
@@ -63,10 +63,9 @@
             </table>
             <span class="item-total">Tổng số lượng: @Model.ChiTietDonDatHangs.Sum(m => m.SoLuong)</span>
             <br />
-            <span class="item-total item-total-money">Thành tiền: @Model.ChiTietDonDatHangs.Sum(m => m.DonGia).Value.ToString("#,## ₫")</span>
+            <span class="item-total item-total-money">Thành tiền: @Model.ChiTietDonDatHangs.Sum(m => m.DonGia)</span>
             <br />
         </div>
-        <button type="submit" class="btn-primary">Duyệt đơn hàng</button>
     </div>
 }
 <style>
