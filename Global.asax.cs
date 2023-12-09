@@ -15,11 +15,19 @@ namespace WebsiteBanHang
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             Application["SoNguoiTruyCap"] = 0;
+            Application["SoNguoiDangHoatDong"] = 0;
         }
         protected void Session_Start()
         {
-            Application.Lock();// ?ong bo hoa
+            Application.Lock();
             Application["SoNguoiTruyCap"] = (int)Application["SoNguoiTruyCap"] + 1;
+            Application["SoNguoiDangHoatDong"] = (int)Application["SoNguoiDangHoatDong"] + 1;
+            Application.UnLock();
+        }
+        protected void Session_End()
+        {
+            Application.Lock();
+            Application["SoNguoiDangHoatDong"] = (int)Application["SoNguoiDangHoatDong"] - 1;
             Application.UnLock();
         }
     }

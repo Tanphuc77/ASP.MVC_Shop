@@ -249,6 +249,7 @@ namespace WebsiteBanHang.Controllers
             }
             db.SaveChanges();
             Session["GioHang"] = null;
+            //QuanLyDatHangController.GuiMail();
             return RedirectToAction("XemGioHang", "GioHang");
         }
         [HttpPost]

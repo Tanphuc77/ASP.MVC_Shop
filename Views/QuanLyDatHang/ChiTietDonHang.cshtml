@@ -27,12 +27,25 @@
                             @Model.NgayDat
                         </td>
                         <td>
-                            Đã thanh toán:
-                            @Model.DaThanhToan
+                            @if (Model.DaThanhToan == false) 
+                            { 
+                                <p>Chưa thanh toán</p>
+                            }
+                            @if (Model.DaThanhToan == true)
+                            {
+                                <p>Đã thanh toán</p> 
+                            }
                         </td>
                         <td>
-                            Tình trạng giao hàng:
-                            @Model.TinhTrangGiaoHang
+                            @if (Model.TinhTrangGiaoHang == false)
+                            {
+                                <p>Chưa giao hàng</p>
+                            }
+                            @if (Model.TinhTrangGiaoHang == true)
+                            {
+                                <p>Đã giao hàng</p>
+                            }
+                            
                         </td>
                     </tr>
                     @foreach (var item in chiTietDonDatHangs)
@@ -63,7 +76,7 @@
             </table>
             <span class="item-total">Tổng số lượng: @Model.ChiTietDonDatHangs.Sum(m => m.SoLuong)</span>
             <br />
-            <span class="item-total item-total-money">Thành tiền: @Model.ChiTietDonDatHangs.Sum(m => m.DonGia)</span>
+            <span class="item-total item-total-money">Thành tiền: @Model.ChiTietDonDatHangs.Sum(m => m.DonGia).Value.ToString("#,## ₫")</span>
             <br />
         </div>
     </div>

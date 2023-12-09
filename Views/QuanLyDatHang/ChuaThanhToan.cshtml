@@ -45,22 +45,50 @@
                             @item.NgayDat
                         </td>
                         <td>
-                            @item.TinhTrangGiaoHang
+                            @if (item.TinhTrangGiaoHang == false)
+                            {
+                                <span style="color: red">Chưa giao hàng</span>
+                            }
+                            else
+                            {
+                                <span style="color: green">Đã giao hàng</span>
+                            }
                         </td>
                         <td>
                             @item.NgayGiao
                         </td>
                         <td>
-                            @item.DaThanhToan
+                            @if (item.DaThanhToan == false)
+                            {
+                                <span style="color: red">Chưa thanh toán</span>
+                            }
+                            else
+                            {
+                                <span style="color: green">Đã thanh toán</span>
+                            }
                         </td>
                         <td>
                             @item.UuDai
                         </td>
                         <td>
-                            @item.DaHuy
+                            @if (item.DaHuy == false)
+                            {
+                                <span style="color: red">@item.DaHuy</span>
+                            }
+                            else
+                            {
+                                <span style="color: green">@item.DaHuy</span>
+                            }
                         </td>
                         <td>
-                            @item.DaXoa
+                            @if (item.DaXoa == false)
+                            {
+                                <span style="color: red">@item.DaXoa</span>
+                            }
+                            else
+                            {
+                                <span style="color: green">@item.DaXoa</span>
+                            }
                         </td>
                         <td>
                             @item.KhachHang.TenKH

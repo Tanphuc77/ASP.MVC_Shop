@@ -59,7 +59,7 @@ namespace WebsiteBanHang.Controllers
 
             return RedirectToAction("ChuaThanhToan");
         }
-        public void GuiMail(string Title, string ToEmail, string FromEmail, string PassWord, string Content)
+        public static void GuiMail(string Title, string ToEmail, string FromEmail, string PassWord, string Content)
         {
             // Gọi mail 
             MailMessage mail = new MailMessage();
