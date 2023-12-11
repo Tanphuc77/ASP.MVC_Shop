@@ -7,6 +7,7 @@ using WebsiteBanHang.Models;
 using System.Net.Mail;
 namespace WebsiteBanHang.Controllers
 {
+    [Authorize(Roles = "QuanTri")]
     public class QuanLyDatHangController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();

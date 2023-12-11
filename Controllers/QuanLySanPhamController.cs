@@ -5,9 +5,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebsiteBanHang.Models;
 namespace WebsiteBanHang.Controllers
 {
+    [Authorize(Roles = "QuanTri")]
     public class QuanLySanPhamController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();

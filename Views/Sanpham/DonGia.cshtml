@@ -14,43 +14,32 @@
         <form>
             <ul>
                 <li>
-                    <input type="radio" name="product-categori" checked=""><a href="#">
-                        Tất cả
-                    </a>
-                </li>
-
-                <li>
-                    <input type="radio" name="product-categori">
+                   
                     @Ajax.ActionLink("1 triệu - 5 triệu", "SanPhamTheoNhaSanXuatDonGia", "SanPham", new { @maLoai = ViewBag.MaLoai, @maNSX = ViewBag.MaNSX, priceRange = "1-5" }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result__product", InsertionMode = InsertionMode.Replace})
                 </li>
                 
                 <li>
-                    <input type="radio" name="product-categori" value="5-10">
+                    
                     @Ajax.ActionLink("5 triệu - 10 triệu", "SanPhamTheoNhaSanXuatDonGia", "SanPham", new { @maLoai = ViewBag.MaLoai, @maNSX = ViewBag.MaNSX, priceRange = "5-10" }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result__product", InsertionMode = InsertionMode.Replace })
                 </li>
 
                 <li>
-                    <input type="radio" name="product-categori" value="10-15">
                     @Ajax.ActionLink("10 triệu - 15 triệu", "SanPhamTheoNhaSanXuatDonGia", "SanPham", new { @maLoai = ViewBag.MaLoai, @maNSX = ViewBag.MaNSX, priceRange = "10-15" }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result__product", InsertionMode = InsertionMode.Replace })
                 </li>
 
                 <li>
-                    <input type="radio" name="product-categori" value="15-30">
                     @Ajax.ActionLink("15 triệu - 30 triệu", "SanPhamTheoNhaSanXuatDonGia", "SanPham", new { @maLoai = ViewBag.MaLoai, @maNSX = ViewBag.MaNSX, priceRange = "15-30" }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result__product", InsertionMode = InsertionMode.Replace })
                 </li>
 
                 <li>
-                    <input type="radio" name="product-categori" value="30-50">
                     @Ajax.ActionLink("30 triệu - 50 triệu", "SanPhamTheoNhaSanXuatDonGia", "SanPham", new { @maLoai = ViewBag.MaLoai, @maNSX = ViewBag.MaNSX, priceRange = "30-50" }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result__product", InsertionMode = InsertionMode.Replace })
                 </li>
 
                 <li>
-                    <input type="radio" name="product-categori" value="50-100">
                     @Ajax.ActionLink("50 triệu - 100 triệu", "SanPhamTheoNhaSanXuatDonGia", "SanPham", new { @maLoai = ViewBag.MaLoai, @maNSX = ViewBag.MaNSX, priceRange = "50-100" }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result__product", InsertionMode = InsertionMode.Replace })
                 </li>
 
                 <li>
-                    <input type="radio" name="product-categori" value="Tren100">
                     @Ajax.ActionLink("Trên 100 triệu", "SanPhamTheoNhaSanXuatDonGia", "SanPham", new { @maLoai = ViewBag.MaLoai, @maNSX = ViewBag.MaNSX, priceRange = "Tren100" }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result__product", InsertionMode = InsertionMode.Replace })
                 </li>
             </ul>

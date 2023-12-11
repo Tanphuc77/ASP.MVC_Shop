@@ -10,7 +10,7 @@ using PagedList;
 using BCrypt.Net;
 using System.Data.Entity;
 using System.Net;
-
+using System.Web.Security;
 namespace WebsiteBanHang.Controllers
 {
     public class HomeController : Controller
@@ -92,7 +92,15 @@ namespace WebsiteBanHang.Controllers
                 bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(Password, thanhVien.MatKhau);
                 if (isPasswordCorrect)
                 {
-                    Session["TaiKhoan"] = thanhVien;
+                    var listQuyen = db.LoaiThanhVien_Quyen.Where(m => m.MaLoaiTV == thanhVien.MaLoaiTV);
+                    string quyen = "";
+                    foreach(var item in listQuyen)
+                    {
+                        quyen += item.Quyen.MaQuyen + ",";
+                    }
+                    quyen = quyen.Substring(0, quyen.Length - 1); // Cắt đi dấu , thừa
+                    PhanQuyen(thanhVien.TaiKhoan.ToString(), quyen);
+                    //Session["TaiKhoan"] = thanhVien;
                     return RedirectToAction("DanhSachSanPham");
                 }
             }
@@ -102,6 +110,7 @@ namespace WebsiteBanHang.Controllers
         public ActionResult DangXuat()
         {
             Session["TaiKhoan"] = null;
+            FormsAuthentication.SignOut();
             Session["GioHang"] = null;
             return RedirectToAction("DanhSachSanPham");
         }
@@ -131,6 +140,23 @@ namespace WebsiteBanHang.Controllers
         public ActionResult LienHe()
         {
             return View();
+        }
+        public void PhanQuyen(string TaiKhoan, string Quyen)
+        {
+            FormsAuthentication.Initialize();
+
+            var ticket = new FormsAuthenticationTicket(1,
+                TaiKhoan, // User
+                DateTime.Now, //Bắt đầu 
+                DateTime.Now.AddHours(3), //Kết thúc
+                false,// remember
+                Quyen,
+                FormsAuthentication.FormsCookiePath
+                );
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
+            if(ticket.IsPersistent ) cookie.Expires = ticket.Expiration;
+
+            Response.Cookies.Add(cookie);
         }
     }
 }

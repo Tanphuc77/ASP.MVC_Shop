@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebsiteBanHang.Models;
 namespace WebsiteBanHang.Controllers
 {
+    [Authorize(Roles = "QuanTri")]
     public class QuanLyNhapHangController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
