@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WebsiteBanHang.Models;
+using System.Net.Mail;
 namespace WebsiteBanHang.Controllers
 {
     public class GioHangController : Controller
@@ -111,7 +112,7 @@ namespace WebsiteBanHang.Controllers
         {
             if (TinhTongSoLuong() == 0)
             {
-                ViewBag.TinhSoLuong = 0 ;
+                ViewBag.TinhSoLuong = 0;
                 ViewBag.TongTien = 0;
                 return PartialView();
             }
@@ -249,20 +250,42 @@ namespace WebsiteBanHang.Controllers
             }
             db.SaveChanges();
             Session["GioHang"] = null;
-            //QuanLyDatHangController.GuiMail();
+            //QuanLyDatHangController.GuiMail("Cảm ơn quý khách đã mua hàng tại chúng tôi",kH.Email,"phuccode77@gmail.com","phantanphuc12345??","Thank you");
             return RedirectToAction("XemGioHang", "GioHang");
         }
-        [HttpPost]
-        public ActionResult CapNhatSoLuong(int maSP, string action)
+        [HttpGet]
+        public ActionResult UpdateCard(int maSP)
         {
-            // Cập nhật số lượng trong session hoặc database (tùy thuộc vào cách bạn lưu trữ giỏ hàng)
-            // ...
-            List<ItemGioHang> lstDonDatHang = LayGioHang();
-            // Lấy dữ liệu mới để trả về
-            double newTinhSoLuong = TinhTongSoLuong();
-            decimal newTongTien = TinhTongTien();
+            SanPham sanPham = db.SanPhams.SingleOrDefault(m => m.MaSP == maSP);
+            if (sanPham == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            List<ItemGioHang> lstGioHang = LayGioHang();
+            ItemGioHang spCheck = lstGioHang.SingleOrDefault(m => m.MaSP == maSP);
+            if (spCheck == null)
+            {
+                return RedirectToAction("XemGioHang", "GioHang");
+            }
+            ViewBag.ListGioHang = lstGioHang;
+            return View(spCheck);
+        }
+        [HttpPost]
+        public ActionResult UpdateCard(ItemGioHang itemGioHang)
+        {
+            SanPham check = db.SanPhams.SingleOrDefault(m => m.MaSP == itemGioHang.MaSP);
+            if (check.SoLuongTon < itemGioHang.SoLuong)
+            {
+                return View("ThongBao");
+            }
+            List<ItemGioHang> listcard = LayGioHang();
+            ItemGioHang update = listcard.Find(m => m.MaSP == itemGioHang.MaSP);
 
-            return Json(new { TinhSoLuong = newTinhSoLuong, TongTien = newTongTien });
+            update.SoLuong = itemGioHang.SoLuong;
+            update.ThanhTien = update.DonGia * update.SoLuong;
+            
+            return RedirectToAction("XemGioHang");
         }
     }
 }

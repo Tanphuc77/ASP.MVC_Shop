@@ -100,7 +100,7 @@ namespace WebsiteBanHang.Controllers
                     }
                     quyen = quyen.Substring(0, quyen.Length - 1); // Cắt đi dấu , thừa
                     PhanQuyen(thanhVien.TaiKhoan.ToString(), quyen);
-                    //Session["TaiKhoan"] = thanhVien;
+                    Session["TaiKhoan"] = thanhVien;
                     return RedirectToAction("DanhSachSanPham");
                 }
             }

@@ -2343,6 +2343,7 @@
     <Compile Include="Controllers\QuanLyDatHangController.cs" />
     <Compile Include="Controllers\QuanLyNhapHangController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
+    <Compile Include="Controllers\QuyenController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
@@ -2485,6 +2486,8 @@
     <Content Include="Views\QuanLyDatHang\DuyetDonHang.cshtml" />
     <Content Include="Views\QuanLyDatHang\ChiTietDonHang.cshtml" />
     <Content Include="Views\ThongKe\ThongKeSanPham.cshtml" />
+    <Content Include="Views\Quyen\DanhSachLoaiThanhVien.cshtml" />
+    <Content Include="Views\GioHang\UpdateCard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

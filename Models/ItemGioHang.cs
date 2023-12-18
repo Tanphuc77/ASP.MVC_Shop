@@ -15,6 +15,10 @@ namespace WebsiteBanHang.Models
         public string HinhAnh { get; set; }
         public int MaLoai { get; set; }
         public int MaNSX { get; set; }
+        public ItemGioHang()
+        {
+
+        }
         public ItemGioHang(int maSP)
         {
             using (QuanLyBanHangEntities db = new QuanLyBanHangEntities())
