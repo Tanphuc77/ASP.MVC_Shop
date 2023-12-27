@@ -9,7 +9,7 @@ using System.Web.Security;
 using WebsiteBanHang.Models;
 namespace WebsiteBanHang.Controllers
 {
-    [Authorize(Roles = "QuanTri")]
+    [Authorize(Roles = "QuanTri,QuanLySanPham")]
     public class QuanLySanPhamController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();

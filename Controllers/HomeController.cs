@@ -101,7 +101,16 @@ namespace WebsiteBanHang.Controllers
                     quyen = quyen.Substring(0, quyen.Length - 1); // Cắt đi dấu , thừa
                     PhanQuyen(thanhVien.TaiKhoan.ToString(), quyen);
                     Session["TaiKhoan"] = thanhVien;
+                    if (quyen == "QuanTri")
+                    {
+                        return RedirectToAction("ThongTinSanPham", "QuanLySanPham");
+                    }
+                    if (quyen == "QuanTri")
+                    {
+                        return RedirectToAction("ThongTinSanPham", "QuanLySanPham");
+                    }
                     return RedirectToAction("DanhSachSanPham");
+                    
                 }
             }
             TempData["ThongBao"] = "Tài khoản hoặc mật khẩu không đúng";
@@ -149,7 +158,7 @@ namespace WebsiteBanHang.Controllers
                 TaiKhoan, // User
                 DateTime.Now, //Bắt đầu 
                 DateTime.Now.AddHours(3), //Kết thúc
-                false,// remember
+                true,// remember
                 Quyen,
                 FormsAuthentication.FormsCookiePath
                 );

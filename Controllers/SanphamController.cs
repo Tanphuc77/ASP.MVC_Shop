@@ -118,7 +118,7 @@ namespace WebsiteBanHang.Controllers
                     return View(sanPham5.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
                 case "Tren100":
                     var sanPham6 = db.SanPhams
-                        .Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false && m.DonGia > 1000000).ToList();
+                        .Where(m => m.MANSX == maNSX && m.MaLoaiSP == maLoai && m.DaXoa == false && m.DonGia > 100000000).ToList();
                     return View(sanPham6.OrderBy(m => m.DonGia).ToPagedList(pageNumbber, pageSize));
                 // Thêm các phạm vi giá khác nếu cần
                 default:
