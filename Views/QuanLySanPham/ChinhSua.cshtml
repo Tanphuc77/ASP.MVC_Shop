@@ -159,7 +159,7 @@
     <div class="form-group">
         <label class="control-label col-md-2">Hình ảnh</label>
         <div class="col-md-12">
-            <input name="HinhAnh" type="file" />
+            <input id="fileInput" name="HinhAnh" type="file" onchange="validateImage()" />
             <span style="color:red; font-size:13px;">@ViewBag.upload</span>
             <img src="@Url.Content("~/assets/images/product/" + Model.HinhAnh)" />
 
@@ -169,7 +169,7 @@
     <div class="form-group">
         <label class="control-label col-md-2">Hình ảnh 1</label>
         <div class="col-md-10">
-            <input name="HinhAnh1" type="file" />
+            <input id="fileInput1" name="HinhAnh1" type="file" onchange="validateImage()" />
             <img src="@Url.Content("~/assets/images/product-mini/"+Model.HinhAnh1)" width="250" height="214" />
         </div>
     </div>
@@ -177,7 +177,7 @@
     <div class="form-group">
         <label class="control-label col-md-2">Hình ảnh 2</label>
         <div class="col-md-10">
-            <input name="HinhAnh2" type="file" />
+            <input id="fileInput2" name="HinhAnh2" type="file" onchange="validateImage()" />
             <img src="@Url.Content("~/assets/images/product-mini/"+Model.HinhAnh2)" width="250" height="214" />
         </div>
     </div>
@@ -185,7 +185,7 @@
     <div class="form-group">
         <label class="control-label col-md-2">Hình ảnh 3</label>
         <div class="col-md-10">
-            <input name="HinhAnh3" type="file" />
+            <input id="fileInput3" name="HinhAnh3" type="file" onchange="validateImage()" />
             <img src="@Url.Content("~/assets/images/product-mini/"+Model.HinhAnh3)" width="250" height="214" />
         </div>
     </div>

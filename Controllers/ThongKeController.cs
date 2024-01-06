@@ -4,9 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebsiteBanHang.Models;
+
 namespace WebsiteBanHang.Controllers
 {
-    [Authorize(Roles = "QuanTri")]
+    [Authorize(Roles = "QuanTri,PhanQuyen")]
     public class ThongKeController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
@@ -20,9 +21,10 @@ namespace WebsiteBanHang.Controllers
             ViewBag.ThongKeDonDatHang = ThongKeDonDatHang();
             return View();
         }
-        public decimal ThongKeTongDoanhThu()
+        public decimal? ThongKeTongDoanhThu()
         {
-            decimal TongDoanhThu = db.ChiTietDonDatHangs.Where(m=>m.DonDatHang.DaThanhToan == true).Sum(m => m.SoLuong * m.DonGia).Value;
+            decimal? TongDoanhThu = db.ChiTietDonDatHangs.Where(m=>m.DonDatHang.DaThanhToan == true).Sum(m => m.SoLuong * m.DonGia).Value;
+            ViewData["TongDoanhThu"] = TongDoanhThu;
             return TongDoanhThu;
         }
         public decimal ThongKeDoanhThuTheoThang(int Thang, int Nam)

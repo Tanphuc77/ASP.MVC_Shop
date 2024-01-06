@@ -72,7 +72,26 @@ body {
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
+ .form-horizontal {
+     max-width: 65%;
+     margin: 0 auto;
+     margin-top: 50px;
+ }
 
+ .f.form-group {
+     display: block;
+     margin-bottom: 10px;
+ }
+
+ .form-group label {
+     display: block;
+     font-weight: bold;
+     margin-bottom: 5px;
+ }
+
+ .form-group .form-control {
+     width: 120%;
+ }
 hr {
   box-sizing: content-box;
   height: 0;

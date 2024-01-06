@@ -11,6 +11,7 @@ using BCrypt.Net;
 using System.Data.Entity;
 using System.Net;
 using System.Web.Security;
+
 namespace WebsiteBanHang.Controllers
 {
     public class HomeController : Controller
@@ -56,6 +57,7 @@ namespace WebsiteBanHang.Controllers
                         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.MatKhau, salt);
                         model.MatKhau = hashedPassword;
                         model.ConfirmPassword = hashedPassword;
+                        model.MaLoaiTV = 5;
                         db.ThanhViens.Add(model);
                         db.SaveChanges();
                         return RedirectToAction("DangNhap");
@@ -63,6 +65,7 @@ namespace WebsiteBanHang.Controllers
                     else
                     {
                         ViewBag.TrungLap = "Tên tài khoản giống với tài khoản khác";
+                        return View();
                     }
                 }
                 else
@@ -101,13 +104,25 @@ namespace WebsiteBanHang.Controllers
                     quyen = quyen.Substring(0, quyen.Length - 1); // Cắt đi dấu , thừa
                     PhanQuyen(thanhVien.TaiKhoan.ToString(), quyen);
                     Session["TaiKhoan"] = thanhVien;
-                    if (quyen == "QuanTri")
+                    if (quyen == "PhanQuyen,QuanLyDonHang,QuanLySanPham,QuanTri")
                     {
+                        Session["Quyen"] = quyen;
+                        return RedirectToAction("ThongTinSanPham","QuanLySanPham");
+                    }
+                    if (quyen == "QuanLySanPham")
+                    {
+                        Session["Quyen"] = quyen;
                         return RedirectToAction("ThongTinSanPham", "QuanLySanPham");
                     }
-                    if (quyen == "QuanTri")
+                    if (quyen == "QuanLyDonHang")
                     {
-                        return RedirectToAction("ThongTinSanPham", "QuanLySanPham");
+                        Session["Quyen"] = quyen;
+                        return RedirectToAction("ChuaThanhToan", "QuanLyDatHang");
+                    }
+                    if (quyen == "PhanQuyen")
+                    {
+                        Session["Quyen"] = quyen;
+                        return RedirectToAction("ListRole", "Quyen");
                     }
                     return RedirectToAction("DanhSachSanPham");
                     

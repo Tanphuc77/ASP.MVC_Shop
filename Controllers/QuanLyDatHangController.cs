@@ -5,12 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using WebsiteBanHang.Models;
 using System.Net.Mail;
+
 namespace WebsiteBanHang.Controllers
 {
-    [Authorize(Roles = "QuanTri")]
+    [Authorize(Roles = "QuanTri,QuanLyDonHang")]
     public class QuanLyDatHangController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
+        public ActionResult MenuOrderPartial()
+        {
+                return View();
+        }
         // GET: QuanLyDatHang
         public ActionResult ChuaThanhToan()
         {

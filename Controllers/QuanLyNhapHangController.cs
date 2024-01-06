@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebsiteBanHang.Models;
+
 namespace WebsiteBanHang.Controllers
 {
     [Authorize(Roles = "QuanTri")]
