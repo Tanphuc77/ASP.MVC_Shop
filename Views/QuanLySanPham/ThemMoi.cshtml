@@ -5,20 +5,8 @@
     Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
 }
 <script src="~/assets/tinymce/js/tinymce/tinymce.min.js"></script> @*sử dụng control editor tinymce*@
-<script>
-    tinymce.init({
-        selector: '#mytextarea',
-        plugins: [
-            'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
-            'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
-            'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
-        ],
-        toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
-            'alignleft aligncenter alignright alignjustify | ' +
-            'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
-    });
-</script>
-
+<script src="~/Scripts/textarea.js"></script>
+<script src="~/Scripts/Checkimage.js"></script>
 @using (Html.BeginForm("ThemMoi", "QuanLySanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -142,46 +130,3 @@
     </div>
 </div>
 }
-<script>
-    function validateImage() {
-        //// Lấy giá trị của trường input file
-        var fileInput = document.getElementById("fileInput");
-        var file = fileInput.files[0];
-        // Kiểm tra nếu trường input file không rỗng
-        if (file) {
-            // Kiểm tra định dạng của hình ảnh
-            if (file.type !== "image/jpeg" && file.type !== "image/png") {
-                alert("Hình ảnh không hợp lệ. Chỉ chấp nhận định dạng JPEG hoặc PNG.");
-                // Xóa giá trị của trường input file
-                fileInput.value = "";
-            }
-        }
-
-        var fileInput = document.getElementById("fileInput1");
-        var file = fileInput.files[1];
-        if (file) {
-            if (file.type !== "image/jpeg" && file.type !== "image/png") {
-                alert("Hình ảnh không hợp lệ. Chỉ chấp nhận định dạng JPEG hoặc PNG.");
-                fileInput.value = "";
-            }
-        }
-
-        var fileInput = document.getElementById("fileInput2");
-        var file = fileInput.files[2];
-        if (file) {
-            if (file.type !== "image/jpeg" && file.type !== "image/png") {
-                alert("Hình ảnh không hợp lệ. Chỉ chấp nhận định dạng JPEG hoặc PNG.");
-                fileInput.value = "";
-            }
-        }
-
-        var fileInput = document.getElementById("fileInput3");
-        var file = fileInput.files[3];
-        if (file) {
-            if (file.type !== "image/jpeg" && file.type !== "image/png") {
-                alert("Hình ảnh không hợp lệ. Chỉ chấp nhận định dạng JPEG hoặc PNG.");
-                fileInput.value = "";
-            }
-        }
-    }
-</script>

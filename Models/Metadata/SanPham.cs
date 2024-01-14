@@ -20,6 +20,9 @@ namespace WebsiteBanHang.Models
             [Display(Name = "Đơn giá")]
             [Required(ErrorMessage = "{0} không được để trống")]
             public Nullable<decimal> DonGia { get; set; }
+            [Display(Name = "Ngày Cập Nhật")]
+            [DataType(DataType.Date)]
+            [Required(ErrorMessage = "Ngày cập nhật là bắt buộc")]
             public Nullable<System.DateTime> NgayCapNhat { get; set; }
             [Display(Name = "Cấu hình")]
             [Required(ErrorMessage = "{0} không được để trống")]

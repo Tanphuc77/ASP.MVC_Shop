@@ -52,10 +52,11 @@
                                 <label>Confirm Password</label>
                                 @Html.Password("ConfirmPassword", null, new { placeholder = "Confirm Password" })
                                 @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "text-danger validation" })
+                                <p style="margin:-13px 0 0 0;color: red">@ViewBag.NoMatch</p>
                             </div>
                             <div class="col-md-6 mb-20">
                                 @Html.MathCaptcha()
-                                <p style="margin:-13px 0 0 0;color: red">@ViewBag.Captcha </p>
+                                <p style="margin:-13px 0 0 0;color: red; font-size:13px">@ViewBag.Captcha </p>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="register-button mt-0">Đăng ký</button>

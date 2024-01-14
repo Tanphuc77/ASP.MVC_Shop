@@ -17,7 +17,7 @@ namespace WebsiteBanHang.Models
             [Display(Name = "Mật khẩu")]
             [Required(ErrorMessage = "{0} không được để trống")]
             public string MatKhau { get; set; }
-            [Compare("MatKhau", ErrorMessage = "Mật khẩu không trùng khớp")]
+            [Compare("ConfirmPassword", ErrorMessage = "Mật khẩu không trùng khớp")]
             public string ConfirmPassword { get; set; }
             [Display(Name = "Họ tên")]
             [Required(ErrorMessage = "{0} không được để trống")]

@@ -55,9 +55,15 @@ namespace WebsiteBanHang.Controllers
                     {
                         string salt = BCrypt.Net.BCrypt.GenerateSalt();
                         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.MatKhau, salt);
+                        string hashedConfirmPassword = BCrypt.Net.BCrypt.HashPassword(model.ConfirmPassword, salt); // Hash mật khẩu xác nhận
                         model.MatKhau = hashedPassword;
-                        model.ConfirmPassword = hashedPassword;
+                        model.ConfirmPassword = hashedConfirmPassword;
                         model.MaLoaiTV = 5;
+                        if(model.MatKhau != model.ConfirmPassword)
+                        {
+                            ViewBag.NoMatch = "Mật khẩu không trùng khớp";
+                            return View();
+                        }
                         db.ThanhViens.Add(model);
                         db.SaveChanges();
                         return RedirectToAction("DangNhap");
@@ -124,6 +130,11 @@ namespace WebsiteBanHang.Controllers
                         Session["Quyen"] = quyen;
                         return RedirectToAction("ListRole", "Quyen");
                     }
+                    if (quyen == "TinTuc")
+                    {
+                        Session["Quyen"] = quyen;
+                        return RedirectToAction("ListNews", "News");
+                    }
                     return RedirectToAction("DanhSachSanPham");
                     
                 }
@@ -159,7 +170,8 @@ namespace WebsiteBanHang.Controllers
         }
         public ActionResult GioiThieu()
         {
-            return View();
+            var listnew = db.TinTucs.OrderByDescending(m => m.NgayDang).ToList();
+            return View(listnew);
         }
         public ActionResult LienHe()
         {

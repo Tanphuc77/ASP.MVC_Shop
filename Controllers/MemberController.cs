@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,10 +23,10 @@ namespace WebsiteBanHang.Controllers
             {
                 return RedirectToAction("Http404", "Error");
             }
-            
+
         }
         [HttpGet]
-        public ActionResult CreateMember() 
+        public ActionResult CreateMember()
         {
             if (Session["TaiKhoan"] != null)
             {
@@ -38,7 +39,7 @@ namespace WebsiteBanHang.Controllers
             }
         }
         [HttpPost]
-        public ActionResult CreateMember(ThanhVien model) 
+        public ActionResult CreateMember(ThanhVien model)
         {
             ViewBag.MaLoaiTV = new SelectList(db.LoaiThanhViens.OrderBy(m => m.TenLoai), "MaLoaiTV", "TenLoai");
             if (ModelState.IsValid)//Kiểm tra xem liệu dữ liệu được submit từ trang web có hợp lệ hay không. 
@@ -77,27 +78,24 @@ namespace WebsiteBanHang.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaLoaiTV = new SelectList(db.LoaiThanhViens.OrderBy(m => m.TenLoai), "MaLoaiTV", "TenLoai",member.MaLoaiTV);
+            ViewBag.MaLoaiTV = new SelectList(db.LoaiThanhViens.ToList(), "MaLoaiTV", "Tenloai", member.MaLoaiTV);
             return View(member);
         }
         [HttpPost]
         public ActionResult EditMember(ThanhVien model)
         {
-            if (ModelState.IsValid)
-            {
-                var editMember = db.ThanhViens.Find(model.MaTV);
+                ViewBag.MaLoaiTV = new SelectList(db.LoaiThanhViens.ToList(), "MaLoaiTV", "Tenloai", model.MaLoaiTV);
+                // Lấy sản phẩm hiện tại từ cơ sở dữ liệu
+                var existingProduct = db.ThanhViens.Find(model.MaTV);
 
                 // Cập nhật các thuộc tính với các giá trị từ biểu mẫu
-                editMember.HoTen = model.HoTen;
-                editMember.DiaChi = model.DiaChi;
-                editMember.Email = model.Email;
-                editMember.SoDienThoai = model.SoDienThoai;
-                editMember.MaLoaiTV = model.MaLoaiTV;
-                ViewBag.MaLoaiTV = new SelectList(db.LoaiThanhViens.OrderBy(m => m.TenLoai), "MaLoaiTV", "TenLoai", editMember.MaLoaiTV);
+                existingProduct.HoTen = model.HoTen;
+                existingProduct.DiaChi = model.DiaChi;
+                existingProduct.Email = model.Email;
+                existingProduct.SoDienThoai = model.SoDienThoai;
+                existingProduct.MaLoaiTV = model.MaLoaiTV;
                 db.SaveChanges();
                 return RedirectToAction("ListMember");
-            }
-            return View(model);
         }
         public ActionResult RemoveMember(int? id)
         {

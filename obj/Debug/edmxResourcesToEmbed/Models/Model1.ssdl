@@ -167,6 +167,16 @@
     <Property Name="CauTraLoi" Type="nvarchar(max)" />
     <Property Name="MaLoaiTV" Type="int" />
   </EntityType>
+  <EntityType Name="TinTuc">
+    <Key>
+      <PropertyRef Name="MaTin" />
+    </Key>
+    <Property Name="MaTin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HinhBia" Type="nvarchar" MaxLength="150" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+    <Property Name="NgayDang" Type="datetime" />
+  </EntityType>
   <Association Name="FK_BinhLuan_SanPham">
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
     <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
@@ -371,6 +381,7 @@
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThanhVien" EntityType="Self.ThanhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TinTuc" EntityType="Self.TinTuc" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_BinhLuan_SanPham" Association="Self.FK_BinhLuan_SanPham">
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="BinhLuan" EntitySet="BinhLuan" />

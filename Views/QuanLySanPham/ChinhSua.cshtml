@@ -5,19 +5,8 @@
     Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
 }
 <script src="~/assets/tinymce/js/tinymce/tinymce.min.js"></script> @*sử dụng control editor tinymce*@
-<script>
-    tinymce.init({
-        selector: '#mytextarea',
-        plugins: [
-            'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
-            'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
-            'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
-        ],
-        toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
-            'alignleft aligncenter alignright alignjustify | ' +
-            'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
-    });
-</script>
+<script src="~/Scripts/textarea.js"></script>
+<script src="~/Scripts/Checkimage.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
