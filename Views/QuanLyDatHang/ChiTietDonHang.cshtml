@@ -76,7 +76,7 @@
             </table>
             <span class="item-total">Tổng số lượng: @Model.ChiTietDonDatHangs.Sum(m => m.SoLuong)</span>
             <br />
-            <span class="item-total item-total-money">Thành tiền: @Model.ChiTietDonDatHangs.Sum(m => m.DonGia).Value.ToString("#,## ₫")</span>
+            <span class="item-total item-total-money">Thành tiền: @Model.ChiTietDonDatHangs.Sum(m => m.DonGia * m.SoLuong).Value.ToString("#,## ₫")</span>
             <br />
         </div>
     </div>

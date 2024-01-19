@@ -2512,6 +2512,8 @@
     <Content Include="Views\News\CreateNews.cshtml" />
     <Content Include="Views\News\ListNews.cshtml" />
     <Content Include="Views\News\UpdateNews.cshtml" />
+    <Content Include="Views\TimKiem\Menuleft.cshtml" />
+    <Content Include="Views\Quyen\CreateMembershiptype.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

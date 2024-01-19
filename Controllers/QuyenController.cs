@@ -40,7 +40,7 @@ namespace WebsiteBanHang.Controllers
                 return RedirectToAction("Http404", "Error");
             }
         }
-        [HttpPost] 
+        [HttpPost]
         public ActionResult CreateRole(Quyen model)
         {
             try
@@ -109,19 +109,55 @@ namespace WebsiteBanHang.Controllers
             }
         }
         [HttpGet]
+        public ActionResult CreateMembershiptype()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateMembershiptype(LoaiThanhVien model)
+        {
+            try
+            {
+                db.LoaiThanhViens.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("Membershiptype");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View(model);
+            }
+        }
+        public ActionResult RemoveMembershiptype(int id)
+        {
+            if (id == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            LoaiThanhVien Role = db.LoaiThanhViens.SingleOrDefault(m => m.MaLoaiTV == id);
+            if (Role == null)
+            {
+                return HttpNotFound();
+            }
+            db.LoaiThanhViens.Remove(Role);
+            db.SaveChanges();
+            return RedirectToAction("ListRole");
+        }
+        [HttpGet]
         public ActionResult Decentralization(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return RedirectToAction("Http404", "Error");
             }
-            LoaiThanhVien listMember = db.LoaiThanhViens.SingleOrDefault(m=>m.MaLoaiTV == id);
-            if(listMember == null)
+            LoaiThanhVien listMember = db.LoaiThanhViens.SingleOrDefault(m => m.MaLoaiTV == id);
+            if (listMember == null)
             {
                 return HttpNotFound();
             }
             ViewBag.ListRole = db.Quyens.ToList();
-            ViewBag.ListMemberRole = db.LoaiThanhVien_Quyen.Where(m=>m.MaLoaiTV == id);
+            ViewBag.ListMemberRole = db.LoaiThanhVien_Quyen.Where(m => m.MaLoaiTV == id);
             return View(listMember);
         }
         [HttpPost]
@@ -136,7 +172,7 @@ namespace WebsiteBanHang.Controllers
                 db.SaveChanges();
             }
             // Kiểm tra danh sách quyền được check
-            if(listDecentralized != null) 
+            if (listDecentralized != null)
             {
                 foreach (var item in listDecentralization)
                 {
@@ -144,7 +180,7 @@ namespace WebsiteBanHang.Controllers
                     db.LoaiThanhVien_Quyen.Add(item);
 
                 }
-                    db.SaveChanges();
+                db.SaveChanges();
             }
             return RedirectToAction("ListMember");
         }

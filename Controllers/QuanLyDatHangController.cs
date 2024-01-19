@@ -19,18 +19,42 @@ namespace WebsiteBanHang.Controllers
         // GET: QuanLyDatHang
         public ActionResult ChuaThanhToan()
         {
-            var Unpaid = db.DonDatHangs.Where(m => m.DaThanhToan == false).OrderBy(m => m.NgayDat).ToList();
-            return View(Unpaid);
+            if (Session["TaiKhoan"] != null)
+            {
+                var Unpaid = db.DonDatHangs.Where(m => m.DaThanhToan == false && m.TinhTrangGiaoHang == false).OrderBy(m => m.NgayDat).ToList();
+                return View(Unpaid);
+            }
+            else
+            {
+                return RedirectToAction("Http404", "Error");
+            }
+            
         }
         public ActionResult ChuaGiao()
         {
-            var Unpaid = db.DonDatHangs.Where(m => m.TinhTrangGiaoHang == false && m.DaThanhToan == true).OrderBy(m => m.NgayDat).ToList();
-            return View(Unpaid);
+            if (Session["TaiKhoan"] != null)
+            {
+                var Unpaid = db.DonDatHangs.Where(m => m.TinhTrangGiaoHang == false && m.DaThanhToan == true).OrderBy(m => m.NgayDat).ToList();
+                return View(Unpaid);
+            }
+            else
+            {
+                return RedirectToAction("Http404", "Error");
+            }
+            
         }
         public ActionResult DaGiaoDaThanhToan()
         {
-            var Unpaid = db.DonDatHangs.Where(m => m.TinhTrangGiaoHang == true && m.DaThanhToan == true).OrderBy(m => m.NgayDat).ToList();
-            return View(Unpaid);
+            if (Session["TaiKhoan"] != null)
+            {
+                var Unpaid = db.DonDatHangs.Where(m => m.TinhTrangGiaoHang == true && m.DaThanhToan == true).OrderBy(m => m.NgayDat).ToList();
+                return View(Unpaid);
+            }
+            else
+            {
+                return RedirectToAction("Http404", "Error");
+            }
+            
         }
         [HttpGet]
         public ActionResult DuyetDonHang(int? id)

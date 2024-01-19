@@ -26,5 +26,11 @@ namespace WebsiteBanHang.Controllers
             return RedirectToAction("KetQuaTimKiem", new { @tuKhoa = tuKhoa });
         }
 
+        public ActionResult Menuleft()
+        {
+            var Producer = db.NhaSanXuats.ToList();
+            return View(Producer);
+        }
+
     }
 }
